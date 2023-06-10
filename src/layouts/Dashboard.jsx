@@ -58,12 +58,6 @@ const Dashboard = () => {
                                     >
                                         Enrolled Classes
                                     </NavLink>
-                                    <NavLink
-                                        to="/dashboard/payment/:id"
-                                        className={({ isActive }) => (isActive ? "bg-green-400" : "default")}
-                                    >
-                                        Payment
-                                    </NavLink>
                                     <div className="border-2 border-black mt-2"></div>
                                 </>
                             }

@@ -8,8 +8,10 @@ import { AuthContext } from '../../../providers/AuthProvider';
 
 const Payment = () => {
     const id = useParams();
-    const {loading,user} = useContext(AuthContext)
-    const { refetch, data: selectedClass = [] } = useQuery({
+    // console.log(id.id)
+    const [price, setPrice] = useState(0);
+    const { loading, user } = useContext(AuthContext)
+    const { refetch, data: selectedClass = [], isLoading } = useQuery({
         queryKey: ['selected', id.id],
         enabled: !loading && !!user?.email,
         queryFn: async () => {
@@ -17,15 +19,25 @@ const Payment = () => {
             return res.json();
         },
     })
-    console.log(selectedClass?.price)
+
+
 
     const stripePromise = loadStripe(import.meta.env.VITE_PK_KEY)
+
+    if (isLoading) {
+        return <div>Loading...</div>; // or show a spinner/loader
+    }
+
     return (
-        <div className='bg-gray-200 h-[50vh] flex justify-center items-center'>
-            <Elements stripe={stripePromise}>
-                <CheckOutFrom price={400} />
-            </Elements>
-        </div >
+        <>
+            <div className='bg-gray-200 h-[50vh] flex justify-center items-center'>
+                <Elements stripe={stripePromise}>
+                    {selectedClass.price !== undefined && (
+                        <CheckOutFrom data={selectedClass} price={selectedClass.price} />
+                    )}
+                </Elements>
+            </div>
+        </>
     );
 };
 

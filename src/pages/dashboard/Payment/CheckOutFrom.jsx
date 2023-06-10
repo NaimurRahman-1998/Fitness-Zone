@@ -3,7 +3,7 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 
-const CheckOutFrom = ({ price }) => {
+const CheckOutFrom = ({ data,price }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [clientSecret, setClientSecret] = useState("");
@@ -17,7 +17,7 @@ const CheckOutFrom = ({ price }) => {
                 console.log(data.data.clientSecret)
                 setClientSecret(data.data.clientSecret)
             })
-    }, [])
+    }, [price])
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -66,31 +66,32 @@ const CheckOutFrom = ({ price }) => {
         setProcessing(false)
         if (paymentIntent.status === 'succeeded') {
             setTransactionId(paymentIntent.id);
-            // const details = {
-            //     email: user?.email,
-            //     transactionId: paymentIntent.id,
-            //     price,
-            //     date: new Date(),
-            //     classImage: data.classImage,
-            //     classId: data.classId,
-            //     className: data.className,
-            //     instructorEmail,
-            //     instructorName: data.instructorName
-            // }
-            // axios.post('http://localhost:5000/payments', { payment })
-            //     .then(data => {
-            //         if (data.data.insertedID) {
-            //             alert('payment done')
-            //             axios.put(`http://localhost:5000/classes/${item.classId}`)
-            //                 .then(response => {
-            //                     console.log(response.data); 
-            //                 })
-            //         }
-            //     })
+            const details = {
+                email: user?.email,
+                transactionId: paymentIntent.id,
+                price,
+                date: new Date(),
+                classImage: data.classImage,
+                classId: data.classId,
+                className: data.className,
+                instructorEmail: data.instructorEmail,
+                instructorName: data.instructorName
+            }
+            axios.post('http://localhost:5000/payments',  details )
+                .then(res => {
+                    if (res.data.insertedId) {
+                        alert('payment done')
+                        axios.put(`http://localhost:5000/classes/enrolled/${data.classId}`)
+                            .then(response => {
+                                console.log(response.data); 
+                            })
+                    }
+                })
         }
     }
     return (
         <form className='w-[25rem] bg-white ' onSubmit={handleSubmit}>
+        price:{price}
             <CardElement
                 options={{
                     style: {
