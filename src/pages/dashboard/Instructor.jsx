@@ -14,18 +14,18 @@ const Instructor = () => {
         const added = { status:'pending'  ,instructorName: user?.displayName,  instructorEmail: user?.email, class: cls, image: image, price: price, seats: seats}
         console.log(added)
 
-        // addClass(added)
-        // .then(data=>{
-        //     console.log(data)
-        //     alert("added")
-        // })
+        addClass(added)
+        .then(data=>{
+            console.log(data)
+            alert("added")
+        })
     }
 
     return (
         <div className='min-w-full'>
             <div className='flex flex-col w-full p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
                 <div className='mb-8 text-center'>
-                    <h1 className='my-3 text-4xl font-bold'>Log In</h1>
+                    <h1 className='my-3 text-4xl font-bold'>Add A Class</h1>
                     <p className='text-sm text-gray-400'>
                         Sign in to access your account
                     </p>

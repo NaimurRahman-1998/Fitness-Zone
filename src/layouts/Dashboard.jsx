@@ -1,10 +1,14 @@
 import { Outlet } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";
 import useInstructor from "../hooks/useInstructor";
+import useAdmin from "../hooks/useAdmin";
+import useStudent from "../hooks/useStudent";
 
 
 const Dashboard = () => {
     const [isInstructor] = useInstructor();
+    const [isAdmin] = useAdmin();
+    const [isStudent] = useStudent()
     return (
         <div>
             <div>
@@ -21,36 +25,58 @@ const Dashboard = () => {
                         <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
                             {/* Sidebar content here */}
                             {
-                                isInstructor ?
-                                    <>
-                                        <NavLink
-                                            to="/dashboard/instructor"
-                                            className={({ isActive }) => (isActive ? "bg-green-400" : "default")}
-                                        >
-                                            Instructor
-                                        </NavLink>
-                                        <NavLink
-                                            to="/dashboard/myclasses"
-                                            className={({ isActive }) => (isActive ? "bg-green-400" : "default")}
-                                        >
-                                            My CLasses
-                                        </NavLink>
-                                    </> : 
-                                    <>
+                                isInstructor &&
+                                <>
                                     <NavLink
-                                            to="/dashboard/selectedclass"
-                                            className={({ isActive }) => (isActive ? "bg-green-400" : "default")}
-                                        >
-                                            My Selected Classes
-                                        </NavLink>
-                                        <NavLink
-                                            to="/dashboard/enrolled"
-                                            className={({ isActive }) => (isActive ? "bg-green-400" : "default")}
-                                        >
-                                            Enrolled Class
-                                        </NavLink>
-                                    </>
+                                        to="/dashboard/addClass"
+                                        className={({ isActive }) => (isActive ? "bg-green-400" : "default")}
+                                    >
+                                        Add A Class
+                                    </NavLink>
+                                    <NavLink
+                                        to="/dashboard/myclasses"
+                                        className={({ isActive }) => (isActive ? "bg-green-400" : "default")}
+                                    >
+                                        My CLasses
+                                    </NavLink>
+                                    <div className="border-2 border-black mt-2"></div>
+                                </>
+
                             }
+
+                            {isStudent &&
+                                <>
+                                    <NavLink
+                                        to="/dashboard/selectedclass"
+                                        className={({ isActive }) => (isActive ? "bg-green-400" : "default")}
+                                    >
+                                        My selected Classes
+                                    </NavLink>
+                                    <NavLink
+                                        to="/dashboard/enrolled"
+                                        className={({ isActive }) => (isActive ? "bg-green-400" : "default")}
+                                    >
+                                        Enrolled Classes
+                                    </NavLink>
+                                    <div className="border-2 border-black mt-2"></div>
+                                </>
+                            }
+
+                            {
+                                isAdmin &&
+                                <>
+                                    <NavLink
+                                        to="/dashboard/admin/manageClasses"
+                                        className={({ isActive }) => (isActive ? "bg-green-400" : "default")}
+                                    >Manage Classes</NavLink>
+                                    <NavLink
+                                        to="/dashboard/admin/allUsers"
+                                        className={({ isActive }) => (isActive ? "bg-green-400" : "default")}
+                                    >All user</NavLink>
+                                    <div className="border-2 border-black mt-2"></div>
+                                </>
+                            }
+
                             <NavLink to={'/'}>home </NavLink>
                         </ul>
 

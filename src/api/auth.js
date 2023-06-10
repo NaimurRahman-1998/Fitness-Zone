@@ -1,8 +1,11 @@
+
+
 export const saveUser = user => {
     const currentUser = {
         email: user.email,
-        name:user.displayName,
-        image:user.photoURL
+        name: user.displayName,
+        image: user.photoURL,
+        role: 'student'
     }
 
     fetch(`http://localhost:5000/users/${user?.email}`, {

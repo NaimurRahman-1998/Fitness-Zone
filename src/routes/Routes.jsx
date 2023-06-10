@@ -8,6 +8,10 @@ import Home from '../pages/home/Home'
 import MyClasses from '../pages/dashboard/MyClasses'
 import SelectedClasses from '../pages/dashboard/SelectedClasses'
 import Enrolled from '../pages/dashboard/Enrolled'
+import InstructorPage from '../pages/Instructor/InstructorPage'
+import Classes from '../pages/Classes/Classes'
+import AllUsers from '../pages/dashboard/Admin/AllUsers'
+import ManageClasses from '../pages/dashboard/Admin/ManageClasses'
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +21,14 @@ export const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>
+      },
+      {
+        path: '/instructor',
+        element: <InstructorPage></InstructorPage>
+      },
+      {
+        path: '/classes',
+        element : <Classes></Classes>
       }
     ]
   },
@@ -33,7 +45,7 @@ export const router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     children: [
       {
-        path: '/dashboard/instructor',
+        path: '/dashboard/addClass',
         element: <Instructor></Instructor>
       },
       {
@@ -48,6 +60,14 @@ export const router = createBrowserRouter([
         path: '/dashboard/enrolled',
         element : <Enrolled></Enrolled>
       },
+      {
+        path: '/dashboard/admin/allUsers',
+        element: <AllUsers></AllUsers>
+      },
+      {
+        path: '/dashboard/admin/manageClasses',
+        element: <ManageClasses></ManageClasses>
+      }
     ]
   }
 ])

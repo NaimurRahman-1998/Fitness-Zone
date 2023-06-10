@@ -1,18 +1,20 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext } from 'react';
 import ClassesCard from '../../component/ClassesCard';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const MyClasses = () => {
+    const {user} = useContext(AuthContext)
     const { refetch, data: classes = [] } = useQuery({
-        queryKey: ['classes'],
+        queryKey: ['classes' , user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/classes`)
+            const res = await fetch(`http://localhost:5000/classes/${user?.email}`)
 
             return res.json();
         },
     })
     return (
-        <div className='grid grid-cols-3'>
+        <div className='flex flex-col gap-10'>
             {
                 classes.map(cls=> 
                 <ClassesCard 

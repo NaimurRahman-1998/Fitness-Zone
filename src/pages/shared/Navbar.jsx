@@ -3,11 +3,17 @@ import { useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link, NavLink } from "react-router-dom";
 import { FaBeer } from "react-icons/fa";
-
+import blankImg from '../../assets/images/blank-profile-picture.png'
+import useAdmin from "../../hooks/useAdmin";
+import useStudent from "../../hooks/useStudent";
+import useInstructor from "../../hooks/useInstructor";
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { user, logOut } = useContext(AuthContext);
-    console.log(user?.photoURL);
+    const [isAdmin] = useAdmin();
+    const [isStudent] = useStudent();
+    const [isInstructor] = useInstructor();
+    // console.log(user?.photoURL)
     const handleLogOut = () => {
         logOut()
             .then(() => { })
@@ -49,37 +55,57 @@ const Navbar = () => {
                         </NavLink>
                     </li>
                     <li>
-                        {user ? (
-                            <NavLink
-                                to="/dashboard/instructor"
-                                className={({ isActive }) => (isActive ? "active" : "default")}
-                            >
-                                Dashboard
-                            </NavLink>
-                        ) : (
-                            ""
-                        )}
+                        {
+                            isStudent &&
+                            <>
+                                <NavLink
+                                    to="/dashboard/selectedclass"
+                                    className={({ isActive }) => (isActive ? "active" : "default")}
+                                >
+                                    dashboard
+                                </NavLink>
+                            </>
+                        }
+                        {
+                            isInstructor &&
+                            <>
+                                <NavLink
+                                    to="/dashboard/addClass"
+                                    className={({ isActive }) => (isActive ? "active" : "default")}
+                                >
+                                    dashboard
+                                </NavLink>
+                            </>
+                        }
+                        {
+                            isAdmin &&
+                            <>
+                                <NavLink
+                                    to="/dashboard/admin/manageClasses"
+                                    className={({ isActive }) => (isActive ? "active" : "default")}
+                                >
+                                    dashboard
+                                </NavLink>
+                            </>
+                        }
                     </li>
                 </ul>
                 {/* button section  */}
 
                 {user ? (
-                    <div className="flex">
+                    <div className="flex items-center">
                         <button
                             onClick={handleLogOut}
-                            className="inline-flex items-center h-12 px-6 mb-3 font-medium text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-700 hover:to-blue-800 transition duration-200 rounded shadow-md  md:mb-0 bg-blue-400 hover:bg-blue-700 hidden lg:flex"
+                            className=" items-center h-12 px-6 mb-3 font-medium text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-700 hover:to-blue-800 transition duration-200 rounded shadow-md  md:mb-0 bg-blue-400 hover:bg-blue-700 hidden lg:flex"
                         >
                             Log Out
                         </button>
-                        <img
-                            className="border-2 rounded-full h-12 w-12"
-                            src={user?.photoURL}
-                            alt=""
-                        />
+                        <img src={user && user.photoURL ? user.photoURL : blankImg} height='50' width='50' className='rounded-full' alt="" />
+                        <p>{user?.displayName}</p>
                     </div>
                 ) : (
                     <Link to="login">
-                        <button className="inline-flex items-center h-12 px-6 mb-3 font-medium text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-700 hover:to-blue-800 transition duration-200 rounded shadow-md  md:mb-0 bg-blue-400 hover:bg-blue-700 hidden lg:flex">
+                        <button className=" items-center h-12 px-6 mb-3 font-medium text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-700 hover:to-blue-800 transition duration-200 rounded shadow-md  md:mb-0 bg-blue-400 hover:bg-blue-700 hidden lg:flex">
                             Log In
                         </button>
                     </Link>

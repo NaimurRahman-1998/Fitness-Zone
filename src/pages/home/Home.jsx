@@ -4,7 +4,7 @@ import ClassesCard from "../../component/ClassesCard";
 
 
 const Home = () => {
-
+    
     const { refetch, data: classes = [] } = useQuery({
         queryKey: ['classes'],
         queryFn: async () => {
@@ -13,6 +13,7 @@ const Home = () => {
             return res.json();
         },
     })
+
     return (
         <div className="grid grid-cols-3">
             {
