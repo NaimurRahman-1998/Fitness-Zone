@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { AuthContext } from '../../providers/AuthProvider';
-import { addClass } from '../../api/classes';
+import { AuthContext } from '../../../providers/AuthProvider';
+import { addClass } from '../../../api/classes';
 
 const Instructor = () => {
     const { user } = useContext(AuthContext);
@@ -11,14 +11,14 @@ const Instructor = () => {
         const image = e.target.image.value
         const price = parseFloat(e.target.price.value)
         const seats = parseFloat(e.target.seats.value)
-        const added = { status:'pending'  ,instructorName: user?.displayName,  instructorEmail: user?.email, class: cls, image: image, price: price, seats: seats}
+        const added = { status: 'pending', instructorName: user?.displayName, instructorEmail: user?.email, class: cls, image: image, price: price, seats: seats }
         console.log(added)
 
         addClass(added)
-        .then(data=>{
-            console.log(data)
-            alert("added")
-        })
+            .then(data => {
+                console.log(data)
+                alert("added")
+            })
     }
 
     return (

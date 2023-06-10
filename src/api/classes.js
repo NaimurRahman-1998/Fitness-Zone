@@ -37,7 +37,3 @@ export const addPayments = async classData => {
     const data = await response.json()
     return data
 }
-
-
-
-

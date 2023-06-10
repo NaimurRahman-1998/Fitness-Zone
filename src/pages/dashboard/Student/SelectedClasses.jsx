@@ -1,7 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import { addPayments } from '../../api/classes';
+import { addPayments } from '../../../api/classes';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const SelectedClasses = () => {
 
@@ -10,11 +11,9 @@ const SelectedClasses = () => {
         queryKey: ['selected'],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/selected`)
-
             return res.json();
         },
     })
-    console.log(selected)
 
     const handleDelete = id => {
         confirm("are you sure?");
@@ -32,20 +31,20 @@ const SelectedClasses = () => {
         }
     }
 
-    const handlePayment = item => {
-        addPayments({id: item.classId})
-            .then(data => {
-                console.log(data)
-                alert("added to payments")
-                axios.put(`http://localhost:5000/classes/${item.classId}`)
-                    .then(response => {
-                        console.log(response.data); // Output the response from the server
-                    })
-                    .catch(error => {
-                        console.error('An error occurred:', error);
-                    });
-            })
-    }
+    // const handlePayment = item => {
+    //     addPayments({ id: item.classId })
+    //         .then(data => {
+    //             console.log(data)
+    //             alert("added to payments")
+    //             axios.put(`http://localhost:5000/classes/${item.classId}`)
+    //                 .then(response => {
+    //                     console.log(response.data); // Output the response from the server
+    //                 })
+    //                 .catch(error => {
+    //                     console.error('An error occurred:', error);
+    //                 });
+    //         })
+    // }
     return (
         <div>
             <div className="overflow-x-auto">
@@ -87,7 +86,7 @@ const SelectedClasses = () => {
                                     <button onClick={() => handleDelete(single._id)} className="btn btn-xs">Delete</button>
                                 </td>
                                 <td>
-                                    <button onClick={() => handlePayment(single)} className="btn btn-xs">Pay</button>
+                                    <Link to={`/dashboard/payment/${single._id}`}><button className="btn btn-xs">Pay</button></Link>
                                 </td>
                             </tr>)
                         }

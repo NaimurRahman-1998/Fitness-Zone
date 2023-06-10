@@ -14,7 +14,7 @@ const Dashboard = () => {
             <div>
                 <div className="drawer lg:drawer-open">
                     <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-                    <div className="drawer-content flex flex-col items-center justify-center">
+                    <div className="drawer-content px-40 py-20 ">
                         {/* Page content here */}
                         <Outlet></Outlet>
                         <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
@@ -57,6 +57,12 @@ const Dashboard = () => {
                                         className={({ isActive }) => (isActive ? "bg-green-400" : "default")}
                                     >
                                         Enrolled Classes
+                                    </NavLink>
+                                    <NavLink
+                                        to="/dashboard/payment/:id"
+                                        className={({ isActive }) => (isActive ? "bg-green-400" : "default")}
+                                    >
+                                        Payment
                                     </NavLink>
                                     <div className="border-2 border-black mt-2"></div>
                                 </>
