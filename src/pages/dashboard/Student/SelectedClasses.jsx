@@ -1,50 +1,51 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { addPayments } from '../../../api/classes';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const SelectedClasses = () => {
+    const {user, loading} = useContext(AuthContext)
+    const [selectedClass,setSelectedClass] = useState([])
+    useEffect(()=>{
+        axios.get(`http://localhost:5000/selected/user/${user?.email}`)
+        .then(data=>{
+            setSelectedClass(data.data)
+        })
+    },[])
 
+    console.log(selectedClass)
 
-    const { refetch, data: selected = [] } = useQuery({
-        queryKey: ['selected'],
-        queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/selected`)
-            return res.json();
-        },
-    })
+    // const { refetch, data: selectedClasses = [] ,isLoading } = useQuery({
+    //     queryKey: ['selected' , user?.email],
+    //     enabled: !loading && !!user?.email,
+    //     queryFn: async () => {
+    //         const res = await fetch(`http://localhost:5000/selected/${user?.email}`)
+    //         return res.json();
+    //     },
+    // })
 
-    const handleDelete = id => {
-        confirm("are you sure?");
-        if (confirm) {
-            fetch(`http://localhost:5000/selected/${id}`, {
-                method: "DELETE"
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.deletedCount > 0) {
-                        alert("done")
-                        refetch()
-                    }
-                })
-        }
-    }
-
-    // const handlePayment = item => {
-    //     addPayments({ id: item.classId })
-    //         .then(data => {
-    //             console.log(data)
-    //             alert("added to payments")
-    //             axios.put(`http://localhost:5000/classes/${item.classId}`)
-    //                 .then(response => {
-    //                     console.log(response.data); // Output the response from the server
-    //                 })
-    //                 .catch(error => {
-    //                     console.error('An error occurred:', error);
-    //                 });
+    // const handleDelete = id => {
+    //     confirm("are you sure?");
+    //     if (confirm) {
+    //         fetch(`http://localhost:5000/selected/${id}`, {
+    //             method: "DELETE"
     //         })
+    //             .then(res => res.json())
+    //             .then(data => {
+    //                 if (data.deletedCount > 0) {
+    //                     alert("done")
+    //                     refetch()
+    //                 }
+    //             })
+    //     }
     // }
+
+    // if (isLoading) {
+    //     return <div>Loading...</div>; // or show a spinner/loader
+    // }
+
     return (
         <div>
             <div className="overflow-x-auto">
@@ -64,7 +65,7 @@ const SelectedClasses = () => {
                     <tbody>
                         {/* row 1 */}
                         {
-                            selected.map((single, i) => <tr key={single._id}>
+                            selectedClass.map((single, i) => <tr key={single._id}>
                                 <td>
                                     {i + 1}
                                 </td>
@@ -88,7 +89,7 @@ const SelectedClasses = () => {
                                 <td>
                                     <Link to={`/dashboard/payment/${single._id}`}><button className="btn btn-xs">Pay</button></Link>
                                 </td>
-                            </tr>)
+                            </tr>) 
                         }
                     </tbody>
 
@@ -96,6 +97,7 @@ const SelectedClasses = () => {
                 </table>
             </div>
         </div>
+        
     );
 };
 

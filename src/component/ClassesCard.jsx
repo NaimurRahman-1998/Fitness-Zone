@@ -16,7 +16,12 @@ const ClassesCard = ({ cls }) => {
         addSelectClass(select)
             .then(data => {
                 console.log(data)
-                alert("added")
+                if(data.insertedId){
+                    alert('Classes Added to Dashboard')
+                }
+                else{
+                    alert('You Already Selected This Class')
+                }
             })
     }
 

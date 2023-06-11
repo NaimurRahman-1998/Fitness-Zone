@@ -79,7 +79,7 @@ const CheckOutFrom = ({ data,price }) => {
             }
             axios.post('http://localhost:5000/payments',  details )
                 .then(res => {
-                    if (res.data.insertedId) {
+                    if (res.data.insertedResult.insertedId) {
                         alert('payment done')
                         axios.put(`http://localhost:5000/classes/enrolled/${data.classId}`)
                             .then(response => {
