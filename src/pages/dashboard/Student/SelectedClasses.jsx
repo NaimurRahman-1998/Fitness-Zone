@@ -1,6 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useEffect, useState } from 'react';
-import { addPayments } from '../../../api/classes';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
@@ -16,35 +14,6 @@ const SelectedClasses = () => {
     },[])
 
     console.log(selectedClass)
-
-    // const { refetch, data: selectedClasses = [] ,isLoading } = useQuery({
-    //     queryKey: ['selected' , user?.email],
-    //     enabled: !loading && !!user?.email,
-    //     queryFn: async () => {
-    //         const res = await fetch(`http://localhost:5000/selected/${user?.email}`)
-    //         return res.json();
-    //     },
-    // })
-
-    // const handleDelete = id => {
-    //     confirm("are you sure?");
-    //     if (confirm) {
-    //         fetch(`http://localhost:5000/selected/${id}`, {
-    //             method: "DELETE"
-    //         })
-    //             .then(res => res.json())
-    //             .then(data => {
-    //                 if (data.deletedCount > 0) {
-    //                     alert("done")
-    //                     refetch()
-    //                 }
-    //             })
-    //     }
-    // }
-
-    // if (isLoading) {
-    //     return <div>Loading...</div>; // or show a spinner/loader
-    // }
 
     return (
         <div>

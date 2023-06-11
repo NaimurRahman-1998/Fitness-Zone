@@ -27,13 +27,14 @@ const ClassesCard = ({ cls }) => {
 
 
     return (
-        <div className="flex w-full bg-base-100 shadow-xl">
-            <figure className="px-10 pt-10">
-                <img src={cls?.image} alt="Shoes" className="rounded-xl w-[20rem] h-[20rem]" />
+        <div className="flex flex-col ">
+            <figure className="">
+                <img src={cls?.image} alt="Shoes" className=" w-[22rem] h-[16rem]" />
             </figure>
-            <div className="card-body items-center text-center">
-                <h2 className="card-title">{cls.class}</h2>
-                <h2 className="card-title">Name :{cls.instructorName}</h2>
+            <div className="mt-8">
+                <h2 className="t-color text-3xl">{cls.class}</h2>
+                <h2 className="text-neutral-400">Instructor Name :{cls.instructorName}</h2>
+                <p class>1yr Training Program</p>
                 <h2 className="card-title">Available Seats: {cls.seats}</h2>
                 <p>Price:{cls.price}</p>
                 <p>Status:{cls.status}</p>
