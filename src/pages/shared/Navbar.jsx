@@ -40,177 +40,179 @@ const Navbar = () => {
                     <Link to='/signup'><p className="hover:text-lime-500 px-4 flex justify-center items-center gap-2" ><FaUserAlt className="text-lime-500 text-sm" /> register</p></Link>
                 </div>
             </div>
-            <div className="flex z-10 justify-between items-center p-10 w-[80%] bg-white h-20 absolute -bottom-8 left-[50%] transform translate-x-[-50%] mx-auto">
-                <img className="w-[10rem]" src={logo} alt="" />
-                <ul className="items-center hidden space-x-8 lg:flex font-semibold">
-                    <li>
-                        <NavLink
-                            to="/"
-                            className={({ isActive }) => (isActive ? "text-lime-500" : "default")}
-                        >
-                            Home
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink
-                            to="/instructor"
-                            className={({ isActive }) => (isActive ? "active" : "default")}
-                        >
-                            Instructor
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink
-                            to="/classes"
-                            className={({ isActive }) => (isActive ? "active" : "default")}
-                        >
-                            Classes
-                        </NavLink>
-                    </li>
-                    <li>
-                        {
-                            isStudent &&
+            <div className="">
+                <div className="flex z-10 justify-between items-center p-10 w-[80%] bg-white h-20 absolute -bottom-8 left-[50%] transform translate-x-[-50%] mx-auto">
+                    <img className="w-[10rem]" src={logo} alt="" />
+                    <ul className="items-center hidden space-x-8 lg:flex font-semibold">
+                        <li>
+                            <NavLink
+                                to="/"
+                                className={({ isActive }) => (isActive ? "text-lime-500" : "default")}
+                            >
+                                Home
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to="/instructor"
+                                className={({ isActive }) => (isActive ? "active" : "default")}
+                            >
+                                Instructor
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to="/classes"
+                                className={({ isActive }) => (isActive ? "active" : "default")}
+                            >
+                                Classes
+                            </NavLink>
+                        </li>
+                        <li>
+                            {
+                                isStudent &&
+                                <>
+                                    <NavLink
+                                        to="/dashboard/selectedclass"
+                                        className={({ isActive }) => (isActive ? "active" : "default")}
+                                    >
+                                        dashboard
+                                    </NavLink>
+                                </>
+                            }
+                            {
+                                isInstructor &&
+                                <>
+                                    <NavLink
+                                        to="/dashboard/addClass"
+                                        className={({ isActive }) => (isActive ? "active" : "default")}
+                                    >
+                                        dashboard
+                                    </NavLink>
+                                </>
+                            }
+                            {
+                                isAdmin &&
+                                <>
+                                    <NavLink
+                                        to="/dashboard/admin/manageClasses"
+                                        className={({ isActive }) => (isActive ? "active" : "default")}
+                                    >
+                                        dashboard
+                                    </NavLink>
+                                </>
+                            }
+                        </li>
+                    </ul>
+                    {
+                        user ?
                             <>
-                                <NavLink
-                                    to="/dashboard/selectedclass"
-                                    className={({ isActive }) => (isActive ? "active" : "default")}
-                                >
-                                    dashboard
-                                </NavLink>
-                            </>
-                        }
-                        {
-                            isInstructor &&
+                                <div className="flex gap-2 items-center">
+                                    <button
+                                        onClick={handleLogOut}
+                                        className="text-black bg-lime-400 px-4 py-2 hover:bg-lime-500 rounded-lg hidden lg:flex"
+                                    >
+                                        Log Out
+                                    </button>
+                                    <img src={user && user.photoURL ? user.photoURL : blankImg} className='w-14 h-14 rounded-full hidden lg:flex' alt="" />
+                                </div>
+                            </> :
                             <>
-                                <NavLink
-                                    to="/dashboard/addClass"
-                                    className={({ isActive }) => (isActive ? "active" : "default")}
-                                >
-                                    dashboard
-                                </NavLink>
+                                <Link to="login">
+                                    <button className="text-black bg-lime-500 px-4 py-2 rounded-lg hidden lg:flex">
+                                        Log In
+                                    </button>
+                                </Link>
                             </>
-                        }
-                        {
-                            isAdmin &&
-                            <>
-                                <NavLink
-                                    to="/dashboard/admin/manageClasses"
-                                    className={({ isActive }) => (isActive ? "active" : "default")}
-                                >
-                                    dashboard
-                                </NavLink>
-                            </>
-                        }
-                    </li>
-                </ul>
-                {
-                    user ?
-                        <>
-                            <div className="flex gap-2 items-center">
-                                <button
-                                    onClick={handleLogOut}
-                                    className="text-black bg-lime-400 px-4 py-2 hover:bg-lime-500 rounded-lg hidden lg:flex"
-                                >
-                                    Log Out
-                                </button>
-                                <img src={user && user.photoURL ? user.photoURL : blankImg} className='w-14 h-14 rounded-full hidden lg:flex' alt="" />
-                            </div>
-                        </> :
-                        <>
-                            <Link to="login">
-                                <button className="text-black bg-lime-500 px-4 py-2 rounded-lg hidden lg:flex">
-                                    Log In
-                                </button>
-                            </Link>
-                        </>
-                }
-                <div className="lg:hidden">
-                    {/* dropdown open button  */}
-                    <button
-                        aria-label="Open Menu"
-                        title="Open Menu"
-                        onClick={() => setIsMenuOpen(true)}
-                    >
-                        <BsChevronBarDown className="w-5 text-gray-600" />
-                    </button>
-                    {isMenuOpen && (
-                        <div className="absolute top-0 left-0 w-full z-10">
-                            <div className="bg-slate-50 p-5 border rounded shadow-sm">
-                                {/* logo & button section  */}
-                                <div className="flex items-center justify-between mb-4">
-                                    <div>
-                                        <Link to="/" className="inline-flex items-center">
-                                            <img className="w-32" src={logo} alt="" />
-                                        </Link>
-                                    </div>
-                                    {/* dropdown menu close button  */}
-                                    <div>
+                    }
+                    <div className="lg:hidden">
+                        {/* dropdown open button  */}
+                        <button
+                            aria-label="Open Menu"
+                            title="Open Menu"
+                            onClick={() => setIsMenuOpen(true)}
+                        >
+                            <BsChevronBarDown className="w-5 text-gray-600" />
+                        </button>
+                        {isMenuOpen && (
+                            <div className="absolute top-0 left-0 w-full z-10">
+                                <div className="bg-slate-50 p-5 border rounded shadow-sm">
+                                    {/* logo & button section  */}
+                                    <div className="flex items-center justify-between mb-4">
                                         <div>
-                                            <button
-                                                aria-label="Close Menu"
-                                                title="Close Menu"
-                                                onClick={() => setIsMenuOpen(false)}
-                                            >
-                                                <BsChevronBarUp className="w-5 text-gray-600" />
-                                            </button>
+                                            <Link to="/" className="inline-flex items-center">
+                                                <img className="w-32" src={logo} alt="" />
+                                            </Link>
+                                        </div>
+                                        {/* dropdown menu close button  */}
+                                        <div>
+                                            <div>
+                                                <button
+                                                    aria-label="Close Menu"
+                                                    title="Close Menu"
+                                                    onClick={() => setIsMenuOpen(false)}
+                                                >
+                                                    <BsChevronBarUp className="w-5 text-gray-600" />
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                {/* mobile nav items section  */}
-                                <nav className="ml-2">
-                                    <ul className="space-y-4 font-medium">
-                                        <li>
-                                            <NavLink
-                                                to="/"
-                                            >
-                                                Home
-                                            </NavLink>
-                                        </li>
-                                        <li>
-                                            <NavLink
-                                                to="/instructor"
-                                                className={({ isActive }) =>
-                                                    isActive ? "active" : "default"
-                                                }
-                                            >
-                                                Instructor
-                                            </NavLink>
-                                        </li>
-                                        <li>
-                                            <NavLink
-                                                to="/classes"
-                                                
-                                            >
-                                                Classes
-                                            </NavLink>
-                                        </li>
-                                        {user ? (
-                                            <button onClick={handleLogOut} className="">
-                                                Log Out
-                                            </button>
-                                        ) : (
+                                    {/* mobile nav items section  */}
+                                    <nav className="ml-2">
+                                        <ul className="space-y-4 font-medium">
                                             <li>
                                                 <NavLink
-                                                    to="login"
+                                                    to="/"
+                                                >
+                                                    Home
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink
+                                                    to="/instructor"
                                                     className={({ isActive }) =>
                                                         isActive ? "active" : "default"
                                                     }
                                                 >
-                                                    Login
+                                                    Instructor
                                                 </NavLink>
                                             </li>
-                                        )}
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    )}
-                </div>
+                                            <li>
+                                                <NavLink
+                                                    to="/classes"
 
+                                                >
+                                                    Classes
+                                                </NavLink>
+                                            </li>
+                                            {user ? (
+                                                <button onClick={handleLogOut} className="">
+                                                    Log Out
+                                                </button>
+                                            ) : (
+                                                <li>
+                                                    <NavLink
+                                                        to="login"
+                                                        className={({ isActive }) =>
+                                                            isActive ? "active" : "default"
+                                                        }
+                                                    >
+                                                        Login
+                                                    </NavLink>
+                                                </li>
+                                            )}
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
+                </div>
             </div>
 
         </div >
-        
+
     );
 };
 

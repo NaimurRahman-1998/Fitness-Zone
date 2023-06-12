@@ -6,7 +6,9 @@ import { Navigation } from "swiper";
 import running from '../assets/images/banner/running.png'
 import weight from '../assets/images/banner/weight.png'
 import { motion } from "framer-motion"
-import section1 from '../assets/images/Home/section1.jpg'
+import img1 from '../assets/images/Home/banner01.png'
+import img2 from '../assets/images/Home/banner02.png'
+import img3 from '../assets/images/Home/banner03.png'
 const Banner = () => {
     return (
         <div>
@@ -40,7 +42,11 @@ const Banner = () => {
                     </div>
                 </SwiperSlide>
             </Swiper>
-            <img className="mx-40 w-[80%]" src={section1} alt="" />
+            <div className=' flex justify-center'>
+                <img className='w-[25rem]' src={img1} alt="" />
+                <img className='w-[25rem]' src={img2} alt="" />
+                <img className='w-[25rem]' src={img3} alt="" />
+            </div>
 
         </div>
     );

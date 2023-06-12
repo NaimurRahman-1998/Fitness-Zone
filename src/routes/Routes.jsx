@@ -14,6 +14,7 @@ import AllUsers from '../pages/dashboard/Admin/AllUsers'
 import ManageClasses from '../pages/dashboard/Admin/ManageClasses'
 import Payment from '../pages/dashboard/Payment/Payment'
 import PrivateRoute from './PrivateRoute'
+import MyPayments from '../pages/dashboard/Student/MyPayments'
 
 export const router = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
       {
         path: '/dashboard/enrolled',
         element: <Enrolled></Enrolled>
+      },
+      {
+        path : '/dashboard/payments',
+        element: <MyPayments></MyPayments>
       },
       {
         path: '/dashboard/admin/allUsers',

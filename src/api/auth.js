@@ -1,5 +1,4 @@
 
-
 export const saveUser = user => {
     const currentUser = {
         email: user.email,

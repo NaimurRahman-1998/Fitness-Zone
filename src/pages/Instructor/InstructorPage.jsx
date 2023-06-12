@@ -14,16 +14,42 @@ const InstructorPage = () => {
     console.log(instructors)
 
     return (
-        <div className=" grid grid-cols-3">
-            {
-                instructors.map(single =>
-                    <div key={single?._id}>
-                        <img src={single?.image} className="w-10 h-10 rounded-lg" alt="" />
-                        <h1>Instructor name: {single?.name}</h1>
-                        <p>email: {single?.email}</p>
-                    </div>
-                )
-            }
+        <div className="mt-16 border-4  mx-40">
+        <h1 className="title">Instructors</h1>
+            <div className="overflow-x-auto  pl-40 mt-[-2.5rem]">
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            instructors.map((singleI,i)=> 
+                                <tr>
+                        <td>{i+1}</td>
+                            <td>
+                                <div className="flex items-center space-x-3">
+                                    <div className="avatar">
+                                        <div className="mask mask-squircle w-12 h-12">
+                                            <img src={singleI.image} alt="Avatar Tailwind CSS Component" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div className="font-bold">{singleI.name}</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                            {singleI.email}
+                            </td>
+                        </tr>)
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };

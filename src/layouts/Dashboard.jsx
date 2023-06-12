@@ -20,7 +20,7 @@ const Dashboard = () => {
                         <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
                     </div>
-                    <div className="drawer-side">
+                    <div className="drawer-side ">
                         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                         <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
                             {/* Sidebar content here */}
@@ -39,6 +39,7 @@ const Dashboard = () => {
                                     >
                                         My CLasses
                                     </NavLink>
+                                    
                                     <div className="border-2 border-black mt-2"></div>
                                 </>
 
@@ -57,6 +58,12 @@ const Dashboard = () => {
                                         className={({ isActive }) => (isActive ? "bg-green-400" : "default")}
                                     >
                                         Enrolled Classes
+                                    </NavLink>
+                                    <NavLink
+                                        to="/dashboard/payments"
+                                        className={({ isActive }) => (isActive ? "bg-green-400" : "default")}
+                                    >
+                                        My payments
                                     </NavLink>
                                     <div className="border-2 border-black mt-2"></div>
                                 </>

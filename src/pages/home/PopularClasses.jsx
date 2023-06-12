@@ -13,9 +13,8 @@ const PopularClasses = () => {
         },
     })
 
-    console.log(classes)
     return (
-        <div className='mx-40 mt-32'>
+        <div className='mt-32'>
             <h2 className='title'>Our Packages</h2>
             <div className=' flex justify-around '>
                 <div className='grid grid-cols-3 gap-12'>

@@ -1,6 +1,8 @@
 
 import Banner from "../../component/Banner";
 import PopularClasses from "./PopularClasses";
+import PopularInstructors from "./PopularInstructors";
+import Review from "./Review";
 
 const Home = () => {
 
@@ -8,7 +10,11 @@ const Home = () => {
     return (
         <div >
             <Banner></Banner>
-            <PopularClasses></PopularClasses>
+            <div className="mx-40">
+                <PopularClasses></PopularClasses>
+                <PopularInstructors></PopularInstructors>
+            </div>
+            <Review></Review>
         </div >
 
 
