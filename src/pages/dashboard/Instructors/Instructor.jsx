@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { addClass } from '../../../api/classes';
-
+import { motion } from "framer-motion"
 const Instructor = () => {
     const { user } = useContext(AuthContext);
     const handleSubmit = e => {
@@ -27,7 +27,7 @@ const Instructor = () => {
                 <div className='mb-8 text-center'>
                     <h1 className='my-3 text-4xl font-bold'>Add A Class</h1>
                     <p className='text-sm text-gray-400'>
-                        Sign in to access your account
+                        Add Details related to your class
                     </p>
                 </div>
                 <form
@@ -47,7 +47,7 @@ const Instructor = () => {
                                 id='class'
                                 required
                                 placeholder='Enter Your class Here'
-                                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-text-lime-400 bg-gray-200 text-gray-900'
                                 data-temp-mail-org='0'
                             />
                             <label htmlFor='image' className='block mb-2 text-sm'>
@@ -59,7 +59,7 @@ const Instructor = () => {
                                 id='image'
                                 required
                                 placeholder='Enter Your image Here'
-                                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-text-lime-400 bg-gray-200 text-gray-900'
                                 data-temp-mail-org='0'
                             />
                             <label htmlFor='seats' className='block mb-2 text-sm'>
@@ -72,7 +72,7 @@ const Instructor = () => {
                                 required
                                 disabled
                                 value={user?.displayName || "null"}
-                                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-text-lime-400 bg-gray-200 text-gray-900'
                                 data-temp-mail-org='0'
                             />
                             <label htmlFor='seats' className='block mb-2 text-sm'>
@@ -86,7 +86,7 @@ const Instructor = () => {
                                 disabled
                                 value={user?.email || "null"}
                                 placeholder='Enter Your image Here'
-                                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-text-lime-400 bg-gray-200 text-gray-900'
                                 data-temp-mail-org='0'
                             />
                             <label htmlFor='seats' className='block mb-2 text-sm'>
@@ -97,7 +97,7 @@ const Instructor = () => {
                                 name='seats'
                                 id='seats'
                                 required
-                                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-text-lime-400 bg-gray-200 text-gray-900'
                                 data-temp-mail-org='0'
                             />
                             <label htmlFor='price' className='block mb-2 text-sm'>
@@ -108,19 +108,22 @@ const Instructor = () => {
                                 name='price'
                                 id='price'
                                 required
-                                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-text-lime-400 bg-gray-200 text-gray-900'
                                 data-temp-mail-org='0'
                             />
                         </div>
                     </div>
 
                     <div>
-                        <button
+                        <motion.button
+                            whileHover={{
+                                scale: 1.1,
+                            }}
                             type='submit'
-                            className='bg-rose-500 w-full rounded-md py-3 text-white'
+                            className='bg-lime-500 hover:bg-lime-600 w-full rounded-md py-3 text-white'
                         >
                             Submit
-                        </button>
+                        </motion.button>
                     </div>
                 </form>
             </div>

@@ -20,72 +20,75 @@ const Dashboard = () => {
                         <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
                     </div>
-                    <div className="drawer-side ">
+                    <div className="drawer-side bg-black text-white">
                         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                        <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-                            {/* Sidebar content here */}
-                            {
-                                isInstructor &&
-                                <>
-                                    <NavLink
-                                        to="/dashboard/addClass"
-                                        className={({ isActive }) => (isActive ? "bg-green-400" : "default")}
-                                    >
-                                        Add A Class
-                                    </NavLink>
-                                    <NavLink
-                                        to="/dashboard/myclasses"
-                                        className={({ isActive }) => (isActive ? "bg-green-400" : "default")}
-                                    >
-                                        My CLasses
-                                    </NavLink>
-                                    
-                                    <div className="border-2 border-black mt-2"></div>
-                                </>
+                        <div className="">
+                            <ul className="menu pt-10 w-80 h-full text-2xl space-y-10 text-white">
+                                {/* Sidebar content here */}
+                                {
+                                    isInstructor &&
+                                    <>
+                                        <NavLink
+                                            to="/dashboard/addClass"
+                                            className={({ isActive }) => (isActive ? "text-lime-400" : "default")}
+                                        >
+                                            Add A Class
+                                        </NavLink>
+                                        <NavLink
+                                            to="/dashboard/myclasses"
+                                            className={({ isActive }) => (isActive ? "text-lime-400" : "default")}
+                                        >
+                                            My CLasses
+                                        </NavLink>
 
-                            }
+                                        <div className="border-2 border-white mt-2"></div>
+                                    </>
 
-                            {isStudent &&
-                                <>
-                                    <NavLink
-                                        to="/dashboard/selectedclass"
-                                        className={({ isActive }) => (isActive ? "bg-green-400" : "default")}
-                                    >
-                                        My selected Classes
-                                    </NavLink>
-                                    <NavLink
-                                        to="/dashboard/enrolled"
-                                        className={({ isActive }) => (isActive ? "bg-green-400" : "default")}
-                                    >
-                                        Enrolled Classes
-                                    </NavLink>
-                                    <NavLink
-                                        to="/dashboard/payments"
-                                        className={({ isActive }) => (isActive ? "bg-green-400" : "default")}
-                                    >
-                                        My payments
-                                    </NavLink>
-                                    <div className="border-2 border-black mt-2"></div>
-                                </>
-                            }
+                                }
 
-                            {
-                                isAdmin &&
-                                <>
-                                    <NavLink
-                                        to="/dashboard/admin/manageClasses"
-                                        className={({ isActive }) => (isActive ? "bg-green-400" : "default")}
-                                    >Manage Classes</NavLink>
-                                    <NavLink
-                                        to="/dashboard/admin/allUsers"
-                                        className={({ isActive }) => (isActive ? "bg-green-400" : "default")}
-                                    >All user</NavLink>
-                                    <div className="border-2 border-black mt-2"></div>
-                                </>
-                            }
+                                {isStudent &&
+                                    <>
+                                        <NavLink
+                                            to="/dashboard/selectedclass"
+                                            className={({ isActive }) => (isActive ? "text-lime-400" : "default")}
+                                        >
+                                            My selected Classes
+                                        </NavLink>
+                                        <NavLink
+                                            to="/dashboard/enrolled"
+                                            className={({ isActive }) => (isActive ? "text-lime-400" : "default")}
+                                        >
+                                            Enrolled Classes
+                                        </NavLink>
+                                        <NavLink
+                                            to="/dashboard/payments"
+                                            className={({ isActive }) => (isActive ? "text-lime-400" : "default")}
+                                        >
+                                            My payments
+                                        </NavLink>
+                                        <div className="border-2 border-white mt-2"></div>
+                                    </>
+                                }
 
-                            <NavLink to={'/'}>home </NavLink>
-                        </ul>
+                                {
+                                    isAdmin &&
+                                    <>
+                                        <NavLink
+                                            to="/dashboard/admin/manageClasses"
+                                            className={({ isActive }) => (isActive ? "text-lime-400" : "default")}
+                                        >Manage Classes</NavLink>
+                                        <NavLink
+                                            to="/dashboard/admin/allUsers"
+                                            className={({ isActive }) => (isActive ? "text-lime-400" : "default")}
+                                        >All user</NavLink>
+                                        <div className="border-2 border-white mt-2"></div>
+                                    </>
+                                }
+
+                                <NavLink to={'/'}>Go to Home </NavLink>
+                            </ul>
+
+                        </div>
 
                     </div>
                 </div>

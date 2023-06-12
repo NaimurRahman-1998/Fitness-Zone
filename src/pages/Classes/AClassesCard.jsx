@@ -68,7 +68,7 @@ const AClassesCard = ({acls}) => {
                         }}
                         onClick={() => handleSelect(acls)}
                         disabled={!user || isInstructor || isAdmin || acls.seats === 0 ? true : false}
-                        className={!user || isInstructor || isAdmin || acls.seats === 0 ? 'text-white px-4 py-2 bg-neutral-500' : 'text-white px-4 py-2 bg-lime-600 hover:bg-lime-400'}>Add To Cart
+                        className={!user || isInstructor || isAdmin || acls.seats === 0 ? 'btn-disabled' : 'text-white px-4 py-2 bg-lime-600 hover:bg-lime-400'}>Add To Cart
                     </motion.button>
                 </div>
 

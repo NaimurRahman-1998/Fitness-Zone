@@ -14,7 +14,7 @@ const MyClasses = () => {
         },
     })
     return (
-        <div className='flex flex-col gap-10'>
+        <div className='grid gap-10 w-full'>
             {
                 classes.map(cls =>
                     <ClassesCard

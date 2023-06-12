@@ -17,11 +17,12 @@ const SelectedClasses = () => {
 
     return (
         <div>
+        <h1 className='title'>My Selected Classes</h1>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr>
+                        <tr className='text-xl'>
                             <th>#</th>
                             <th>Image</th>
                             <th>Class</th>
@@ -51,12 +52,12 @@ const SelectedClasses = () => {
                                 <td>
                                     {single.instructorName}
                                 </td>
-                                <td>{single.price}</td>
+                                <td>{single.price} $</td>
                                 <td>
-                                    <button onClick={() => handleDelete(single._id)} className="btn btn-xs">Delete</button>
+                                    <button onClick={() => handleDelete(single._id)} className="btn btn-xs btn-error text-white hover:bg-lime-500 hover:border-lime-500">Delete</button>
                                 </td>
                                 <td>
-                                    <Link to={`/dashboard/payment/${single._id}`}><button className="btn btn-xs">Pay</button></Link>
+                                    <Link to={`/dashboard/payment/${single._id}`}><button className="btn btn-xs btn-warning hover:btn-link">Pay</button></Link>
                                 </td>
                             </tr>) 
                         }
