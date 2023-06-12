@@ -16,7 +16,7 @@ const PopularInstructors = () => {
             <h1 className='title'>Our Instructors</h1>
 
             <div className='flex justify-around'>
-                <div className='grid grid-cols-4 gap-10'>
+                <div className=' grid  lg:grid-cols-4 gap-10'>
                     {
                         instructors.slice(0,8).map(singleI =>
                             <InstructorsCard key={singleI._id} data={singleI}>

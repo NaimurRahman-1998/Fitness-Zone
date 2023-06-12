@@ -19,10 +19,10 @@ const Banner = () => {
                         initial={{ x: -400, scale: 0 }}
                         animate={{ x: 0, scale: 1 }}
                         transition={{ delay: 0.5, duration: 0.75 }}
-                        className=" absolute top-36 left-[10rem]">
+                        className=" absolute top-36 left-[2rem] lg:left-[10rem]">
 
-                        <h1 className="text-white text-6xl font-bold ">Enroll With The Best </h1>
-                        <h1 className="text-white text-6xl font-bold"><span className="text-red-600">Fitness</span> Temp<span className="text-red-600">late</span> </h1>
+                        <h1 className="text-white text-lg lg:text-6xl font-bold ">Enroll With The Best </h1>
+                        <h1 className="text-white text-lg lg:text-6xl font-bold"><span className="text-red-600">Fitness</span> Temp<span className="text-red-600">late</span> </h1>
                     </motion.div>
                 </SwiperSlide>
                 <SwiperSlide className="relative">
@@ -42,10 +42,10 @@ const Banner = () => {
                     </div>
                 </SwiperSlide>
             </Swiper>
-            <div className=' flex justify-center'>
-                <img className='w-[25rem]' src={img1} alt="" />
-                <img className='w-[25rem]' src={img2} alt="" />
-                <img className='w-[25rem]' src={img3} alt="" />
+            <div className='flex lg:flex justify-center'>
+                <img className='w-[6rem] lg:w-[25rem]' src={img1} alt="" />
+                <img className='w-[6rem] lg:w-[25rem]' src={img2} alt="" />
+                <img className='w-[6rem] lg:w-[25rem]' src={img3} alt="" />
             </div>
 
         </div>

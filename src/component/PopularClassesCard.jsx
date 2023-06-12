@@ -14,21 +14,6 @@ const PopularClassesCard = ({ cls }) => {
     const [isAdmin] = useAdmin();
     // console.log(cls)
 
-    const handleSelect = (data) => {
-        console.log('clicked')
-        // const select = { classId: data._id, className: data.class, classImage: data.image, instructorEmail: data.instructorEmail, instructorName: data.instructorName, price: data.price, seats: data.seats, StudentName: user?.displayName, studentEmail: user?.email }
-        // console.log(select)
-        // addSelectClass(select)
-        //     .then(data => {
-        //         console.log(data)
-        //         if (data.insertedId) {
-        //             alert('Classes Added to Dashboard')
-        //         }
-        //         else {
-        //             alert('You Already Selected This Class')
-        //         }
-        //     })
-    }
 
     return (
         <>
@@ -38,26 +23,26 @@ const PopularClassesCard = ({ cls }) => {
                 data-aos-easing="ease-in-out"
                 data-aos-mirror="true"
                 data-aos-once="false"
-                className="relative hover:border-lime-500 hover:border-2 transition duration-300 w-96 bg-base-100 shadow-xl group">
-                <figure><img src={cls.image} className=' h-[15rem] w-[25rem]' alt="Shoes" /></figure>
+                className="relative hover:border-lime-500 hover:border-2 transition duration-300 w-60 lg:w-96 bg-base-100 shadow-xl group">
+                <figure className='flex justify-center'><img src={cls.image} className='h-[5rem] lg:h-[15rem] lg:w-[25rem] w-[12rem]' alt="Shoes" /></figure>
                 <div className="card-body">
-                    <h2 className="text-neutral-600 text-2xl ">
+                    <h2 className="text-neutral-600 lg:text-2xl ">
                         {cls.class}!
                     </h2>
-                    <p className='mt-[-6px] text-neutral-400'>1 yr Training Program </p>
+                    <p className='mt-[-6px] text-xs lg:text-base text-neutral-400'>1 yr Training Program </p>
                     {
-                        cls?.enrolled ? <p className='mt-[-6px] text-neutral-400'>{cls.enrolled} Enrolled</p>
-                            : <p className='mt-[-6px] text-neutral-400'>No One Enrolled</p>
+                        cls?.enrolled ? <p className='mt-[-6px] text-xs lg:text-base text-neutral-400'>{cls.enrolled} Enrolled</p>
+                            : <p className='mt-[-6px] text-xs lg:text-base text-neutral-400'>No One Enrolled</p>
                     }
 
                     <div className='flex justify-start gap-5 items-center mt-5'>
-                        <div className='group-hover:border-lime-500 border-2 flex flex-col justify-center items-center rounded-full w-16 h-16 border-black '>
-                            <p>4</p>
-                            <p className='border-t-2 border-black group-hover:border-lime-500'>Steps</p>
+                        <div className='group-hover:border-lime-500 border-2 flex flex-col justify-center items-center rounded-full p-2 lg:w-16 lg:h-16 border-black '>
+                            <p className='text-xs lg:text-base'>4</p>
+                            <p className='text-xs lg:text-base border-t-2 border-black group-hover:border-lime-500'>Steps</p>
                         </div>
                         <div>
-                            <p className='color text-xl font-semibold'>Muscle Group:</p>
-                            <p className='text-neutral-400'>Muscle, Excercises</p>
+                            <p className='color text-xs lg:text-xl  font-semibold'>Muscle Group:</p>
+                            <p className=' text-xs lg:text-base text-neutral-400'>Muscle, Excercises</p>
                         </div>
                     </div>
                     {/* <div>
