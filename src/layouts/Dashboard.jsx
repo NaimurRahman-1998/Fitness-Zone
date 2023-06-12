@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import useInstructor from "../hooks/useInstructor";
 import useAdmin from "../hooks/useAdmin";
 import useStudent from "../hooks/useStudent";
+import TransitionEffect from "../component/TransitionEffect";
 
 
 const Dashboard = () => {
@@ -11,6 +12,7 @@ const Dashboard = () => {
     const [isStudent] = useStudent()
     return (
         <div>
+        <TransitionEffect></TransitionEffect>
             <div>
                 <div className="drawer lg:drawer-open">
                     <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />

@@ -1,12 +1,15 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from 'react-icons/fc';
+import { AiFillEye } from 'react-icons/ai';
+import { AiFillEyeInvisible } from 'react-icons/ai';
 import { saveUser } from "../../api/auth";
 import Lottie from "lottie-react";
 import signup from "../../assets/Animations/signup.json";
 const Login = () => {
+    const [show,setShow] = useState(false)
     const { signIn, signInWithGoogle } = useContext(AuthContext);
     const navigate = useNavigate()
     const location = useLocation()
@@ -41,7 +44,9 @@ const Login = () => {
         });
     }
 
-
+    const handleShow =()=>{
+        setShow(!show)
+    }
 
     return (
 
@@ -58,11 +63,15 @@ const Login = () => {
                 </div>
 
                 {/* include validation with required or other standard HTML validation rules */}
-                <div className=" flex flex-col mt-6">
+                <div className="relative flex flex-col mt-6">
                     <label>
                         Password
                     </label>
-                    <input className=" input" type="password" {...register("password", { required: true })} />
+                    
+                    <input className=" input" type={show ? 'text' : 'password'} {...register("password", { required: true })} />
+                    {
+                        show ? <AiFillEyeInvisible onClick={handleShow} className="absolute right-5 bottom-3 " size={20}/> :  <AiFillEye onClick={handleShow} className="absolute right-5 bottom-3 " size={20}/>
+                    }
                 </div>
                 {/* errors will return when field validation fails  */}
                 {errors.exampleRequired && <span>This field is required</span>}

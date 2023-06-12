@@ -44,7 +44,7 @@ const Navbar = () => {
                 <div className="flex z-10 justify-between items-center p-10 w-[80%] bg-white h-20 absolute -bottom-8 left-[50%] transform translate-x-[-50%] mx-auto">
                     <img className="w-[10rem]" src={logo} alt="" />
                     <ul className="items-center hidden space-x-8 lg:flex font-semibold">
-                        <li>
+                        <li className="hover:text-lime-500">
                             <NavLink
                                 to="/"
                                 className={({ isActive }) => (isActive ? "text-lime-500" : "default")}
@@ -52,23 +52,23 @@ const Navbar = () => {
                                 Home
                             </NavLink>
                         </li>
-                        <li>
+                        <li className="hover:text-lime-500">
                             <NavLink
                                 to="/instructor"
-                                className={({ isActive }) => (isActive ? "active" : "default")}
+                                className={({ isActive }) => (isActive ? "text-lime-500" : "default")}
                             >
                                 Instructor
                             </NavLink>
                         </li>
-                        <li>
+                        <li className="hover:text-lime-500">
                             <NavLink
                                 to="/classes"
-                                className={({ isActive }) => (isActive ? "active" : "default")}
+                                className={({ isActive }) => (isActive ? "text-lime-500" : "default")}
                             >
                                 Classes
                             </NavLink>
                         </li>
-                        <li>
+                        <li className="hover:text-lime-500">
                             {
                                 isStudent &&
                                 <>

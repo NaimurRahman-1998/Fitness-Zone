@@ -2,22 +2,39 @@ import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
+import { useQuery } from '@tanstack/react-query';
 
 const SelectedClasses = () => {
-    const {user, loading} = useContext(AuthContext)
-    const [selectedClass,setSelectedClass] = useState([])
-    useEffect(()=>{
-        axios.get(`http://localhost:5000/selected/user/${user?.email}`)
-        .then(data=>{
-            setSelectedClass(data.data)
-        })
-    },[])
+    const { user, loading } = useContext(AuthContext)
+    const url = `http://localhost:5000/selected/user/${user?.email}`
 
-    console.log(selectedClass)
+    const { refetch, data: selectedClass = [] } = useQuery({
+        queryKey: ['approved'],
+        queryFn: async () => {
+            const res = await fetch(url)
+            return res.json();
+        },
+    })
+
+    const handleDelete = id => {
+        confirm("are you sure?");
+        if (confirm) {
+            fetch(`http://localhost:5000/selected/${id}`, {
+                method: "DELETE"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        alert("done")
+                        refetch()
+                    }
+                })
+        }
+    }
 
     return (
         <div>
-        <h1 className='title'>My Selected Classes</h1>
+            <h1 className='title'>My Selected Classes</h1>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
@@ -59,7 +76,7 @@ const SelectedClasses = () => {
                                 <td>
                                     <Link to={`/dashboard/payment/${single._id}`}><button className="btn btn-xs btn-warning hover:btn-link">Pay</button></Link>
                                 </td>
-                            </tr>) 
+                            </tr>)
                         }
                     </tbody>
 
@@ -67,7 +84,7 @@ const SelectedClasses = () => {
                 </table>
             </div>
         </div>
-        
+
     );
 };
 

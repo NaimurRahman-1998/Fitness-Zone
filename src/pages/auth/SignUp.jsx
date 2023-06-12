@@ -78,10 +78,8 @@ const SignUp = () => {
         setPassword(input);
         if (input.length < 6) {
             setPasswordError("Password must be at least 6 characters long");
-        } else if (!/\d/.test(input)) {
-            setPasswordError("Password must contain at least one digit");
-        } else if (!/[a-z]/.test(input)) {
-            setPasswordError("Password must contain at least one lowercase letter");
+        } else if (!/[@$!%*?&]/.test(input)) {
+            setPasswordError("Password must contain at least one Special Character");
         } else if (!/[A-Z]/.test(input)) {
             setPasswordError("Password must contain at least one uppercase letter");
         } else {
@@ -137,7 +135,7 @@ const SignUp = () => {
                     <label className="input-txt">Password</label>
                     <input
                         className="input"
-                        type="password"
+                        type="text"
                         name="password"
                         required
                         placeholder="Your Password"

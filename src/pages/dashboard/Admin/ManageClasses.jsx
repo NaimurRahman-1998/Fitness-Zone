@@ -39,7 +39,7 @@ const ManageClasses = () => {
         <div>
             {
                 allClasses.map(singleClass =>
-                    <div key={singleClass._id} className="card lg:card-side w-full bg-base-100 shadow-xl">
+                    <div key={singleClass._id} className="card mb-10 lg:card-side w-full bg-base-100 shadow-xl">
                         <figure><img src={singleClass.image} className="w-[10rem] h-[10rem]" alt="Album" /></figure>
                         <div className="card-body">
                             <h2 className="card-title">{singleClass.class}</h2>
