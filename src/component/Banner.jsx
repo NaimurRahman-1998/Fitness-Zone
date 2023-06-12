@@ -30,7 +30,7 @@ const Banner = () => {
                     <div className="bg-neutral-800 pt-[15rem] w-full h-full opacity-60 text-white text-center font-bold space-y-4 text-4xl absolute bottom-0 ">
                         <h1>Have a Problem with Stamina?</h1>
                         <h1>Build Maximum Stamina With Our Course Plan</h1>
-                        <button className="btn ">Enroll Now</button>
+                        <button className="btn bg-lime-500">Enroll Now</button>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className="relative">
@@ -38,7 +38,7 @@ const Banner = () => {
                     <div className="bg-neutral-800 pt-[15rem] w-full h-full opacity-60 text-white text-center font-bold space-y-4 text-4xl absolute bottom-0 ">
                         <h1>Friends Shaming Because of you are thin?</h1>
                         <h1>Build Maximum Strength With Our Course Plan</h1>
-                        <button className="btn ">Enroll Now</button>
+                        <button className="btn bg-lime-500">Enroll Now</button>
                     </div>
                 </SwiperSlide>
             </Swiper>

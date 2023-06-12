@@ -30,7 +30,7 @@ const Payment = () => {
 
     return (
         <>
-            <div className='bg-gray-200 h-[50vh] flex justify-center items-center'>
+            <div className='pay'>
                 <Elements stripe={stripePromise}>
                     {selectedClass.price !== undefined && (
                         <CheckOutFrom data={selectedClass} price={selectedClass.price} />

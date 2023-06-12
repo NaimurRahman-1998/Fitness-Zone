@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
-import { FaGoogle } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
 import { saveUser } from "../../api/auth";
-
+import Lottie from "lottie-react";
+import signup from "../../assets/Animations/23640-sign-in-or-sign-up-animation.json";
 const SignUp = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -56,7 +57,7 @@ const SignUp = () => {
                 // ..
             });
 
-            errorMessage || navigate("/login");
+        errorMessage || navigate("/login");
     };
 
 
@@ -100,27 +101,25 @@ const SignUp = () => {
             });
     };
     return (
-        <div className="flex justify-center items-center min-h-screen">
-            <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
-                <div className="mb-8 text-center">
-                    <h1 className="my-3 text-4xl font-bold">Sign Up</h1>
-                    <p className="text-sm text-gray-400">
-                        Sign in to access your account
-                    </p>
-                </div>
-                <form onSubmit={handleSubmit} className=" max-w-sm mx-auto mt-12 ">
+        <div className="flex gap-5 justify-center items-center h-[100vh]">
+            <Lottie animationData={signup} loop={true} />
+            <form onSubmit={handleSubmit} className="bg-neutral-200 w-[40%] px-28 py-16">
+                <h1 className="text-center text-5xl font-bold mb-5">Please Register!</h1>
+                <div className="flex flex-col">
                     <label className="input-txt">Name</label>
                     <input
-                        className="input-field w-full "
+                        className="input"
                         type="text"
                         name="name"
                         required
-                        placeholder="Your Name"
+                        placeholder="Type Your Name"
                         onChange={(e) => setName(e.target.value)}
                     />
+                </div>
+                <div className="flex flex-col">
                     <label className="input-txt">Email</label>
                     <input
-                        className="input-field w-full"
+                        className="input"
                         type="email"
                         name="email"
                         required
@@ -128,14 +127,16 @@ const SignUp = () => {
                         onChange={handleEmail}
                     />
                     {emailError && (
-                        <span className="text-red-500 py-2 text-lg font-medium">
+                        <span className="text-red-500 py-2 text-sm ">
                             {emailError}
                         </span>
                     )}
-                    <br />
+                </div>
+
+                <div className="flex flex-col">
                     <label className="input-txt">Password</label>
                     <input
-                        className="input-field w-full"
+                        className="input"
                         type="password"
                         name="password"
                         required
@@ -147,10 +148,12 @@ const SignUp = () => {
                             {passwordError}
                         </span>
                     )}
-                    <br />
+                </div>
+
+                <div className="flex flex-col">
                     <label className="input-txt">Photo URL</label>
                     <input
-                        className="input-field w-full"
+                        className="input"
                         type="text"
                         name="photo"
                         required
@@ -161,12 +164,13 @@ const SignUp = () => {
                             {errorMessage}
                         </span>
                     )}
-                    <input
-                        className="w-full p-2 bg-purple-500 gap-2 rounded-md text-white font-semibold cursor-pointer mt-4"
-                        type="submit"
-                        value="Register"
-                    />
-                </form>
+                </div>
+
+                <input
+                    className="btn bg-lime-500 mt-6"
+                    type="submit"
+                    value="Register"
+                />
                 <div className="flex items-center pt-4 space-x-1">
                     <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
                     <p className="px-3 text-sm dark:text-gray-400">
@@ -176,11 +180,11 @@ const SignUp = () => {
                 </div>
                 <div
                     onClick={handleGoogleSignIn}
-                    className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer"
+                    className=" text-lg group flex justify-center items-center space-x-2 border m-3 p-2 cursor-pointer"
                 >
-                    <FaGoogle size={16} />
+                    <FcGoogle className=" group-hover:scale-125 transition duration-300" size={32} />
 
-                    <p>Continue with Google</p>
+                    <p className="group-hover:text-blue-500">Continue with Google</p>
                 </div>
                 <p className="px-6 text-sm text-center text-gray-400">
                     Already have an account?{" "}
@@ -191,7 +195,9 @@ const SignUp = () => {
                         Login
                     </Link>
                 </p>
-            </div>
+            </form>
+
+
         </div>
     );
 };

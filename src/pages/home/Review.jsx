@@ -13,7 +13,7 @@ const Review = () => {
     return (
         (<div
             
-            className='my-80 bg-fixed reviewDiv'>
+            className='my-40 bg-fixed reviewDiv'>
             <Swiper
                 pagination={{
                     type: "progressbar",

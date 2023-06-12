@@ -2,8 +2,8 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
-
-const CheckOutFrom = ({ data,price }) => {
+import './form.css'
+const CheckOutFrom = ({ data, price }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [clientSecret, setClientSecret] = useState("");
@@ -77,44 +77,57 @@ const CheckOutFrom = ({ data,price }) => {
                 instructorEmail: data.instructorEmail,
                 instructorName: data.instructorName
             }
-            axios.post('http://localhost:5000/payments',  details )
+            axios.post('http://localhost:5000/payments', details)
                 .then(res => {
                     if (res.data.insertedResult.insertedId) {
                         alert('payment done')
                         axios.put(`http://localhost:5000/classes/enrolled/${data.classId}`)
                             .then(response => {
-                                console.log(response.data); 
+                                console.log(response.data);
                             })
                     }
                 })
         }
     }
     return (
-        <form className='w-[25rem] bg-white ' onSubmit={handleSubmit}>
-        price:{price}
-            <CardElement
-                options={{
-                    style: {
-                        base: {
-                            fontSize: '16px',
-                            color: '#424770',
-                            '::placeholder': {
-                                color: '#aab7c4',
+        <div className=' border-2 border-green-600 '>
+            <div className='text-xl font-semibold mb-[-3rem] flex gap-5 justify-center mt-7'>
+                <div>
+                    <h1>Payment For : {data.className}</h1>
+                    <h1>Payment By  : {data.StudentName}</h1>
+                </div>
+                <div>
+                    <h1>User Email : {data.studentEmail}</h1>
+                    <h1>Price      : {data.price} $</h1>
+                </div>
+            </div>
+            <form className=' f bg-neutral-300 bg-transparent opacity-50 hover:opacity-100 border-2 border-black flex justify-center flex-col items-center' onSubmit={handleSubmit}>
+                <CardElement
+                    className='w-[30rem]'
+                    options={{
+                        style: {
+                            base: {
+                                fontSize: '16px',
+                                color: '#424770',
+                                '::placeholder': {
+                                    color: '#aab7c4',
+                                },
+                            },
+                            invalid: {
+                                color: '#9e2146',
                             },
                         },
-                        invalid: {
-                            color: '#9e2146',
-                        },
-                    },
-                }}
-            />
-            <button className='btn btn-warning btn-xs mt-6'
-                type="submit"
-                disabled={!stripe || !clientSecret || processing}>
-                Pay
-            </button>
-            {transactionId && <p className="text-green-500">Transaction complete with transactionId: {transactionId}</p>}
-        </form>
+                    }}
+                />
+
+                <button className='btn btn-warning  w-20 btn-xs '
+                    type="submit"
+                    disabled={!stripe || !clientSecret || processing}>
+                    Pay
+                </button>
+                {transactionId && <p className="text-green-500">Transaction complete with transactionId: {transactionId}</p>}
+            </form>
+        </div>
     );
 };
 

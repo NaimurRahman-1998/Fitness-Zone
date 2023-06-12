@@ -2,8 +2,9 @@ import { useContext } from "react";
 import useInstructor from "../hooks/useInstructor";
 import { AuthContext } from "../providers/AuthProvider";
 import { addSelectClass } from "../api/classes";
+import UpdateModal from "../pages/dashboard/Instructors/UpdateModal";
 
-const ClassesCard = ({ cls }) => {
+const ClassesCard = ({ cls ,refetch }) => {
 
     const { user } = useContext(AuthContext)
 
@@ -27,17 +28,18 @@ const ClassesCard = ({ cls }) => {
 
 
     return (
-        <div className="flex items-center gap-10 w-full border-2 border-black">
+        <div className="flex items-center p-5 gap-10 w-full border-2 border-black">
             <figure className="">
                 <img src={cls?.image} alt="Shoes" className=" w-[22rem] h-[16rem] rounded-lg" />
             </figure>
             <div className="flex gap-5">
                 <div >
-                    <h2 className="t-color text-3xl">{cls.class}</h2>
+                    <h2 className="t-color w-[12rem] text-3xl">{cls.class}</h2>
                     <h2 className="text-neutral-400 mb-3">Instructor Name :{cls.instructorName}</h2>
                     <h2 className="card-title">Available Seats: {cls.seats}</h2>
                     <p className="mb-3">Price:{cls.price} $</p>
-                    <button className="btn bg-lime-500">Update</button>
+                    <label htmlFor={cls._id} className="btn bg-lime-500" >Update</label>
+                    <UpdateModal data={cls} refetch={refetch}></UpdateModal>
                 </div>
                 <div className="mt-[4.50rem]">
                     <p className="font-semibold text-xl">Status: <span className={cls.status === 'denied' && 'text-red-500' || cls.status ==='approved' && 'text-green-500' || cls.status ==='pending' && 'text-yellow-500'}>{cls.status}</span></p>

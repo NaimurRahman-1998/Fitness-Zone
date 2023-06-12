@@ -9,3 +9,6 @@
 .color {
     @apply text-neutral-600
 }
+.input {
+    @apply py-2 rounded-md
+}

@@ -20,6 +20,7 @@ const MyClasses = () => {
                     <ClassesCard
                         key={cls._id}
                         cls={cls}
+                        refetch={refetch}
                     >
 
                     </ClassesCard>)
