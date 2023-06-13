@@ -18,6 +18,7 @@ import MyPayments from '../pages/dashboard/Student/MyPayments'
 import ErrorPage from '../pages/ErrorPage'
 import StudentRoute from './StudentRoute'
 import InstructorRoute from './InstructorRoute'
+import AdminRoute from './AdminRoute'
 
 export const router = createBrowserRouter([
   {
@@ -73,11 +74,11 @@ export const router = createBrowserRouter([
       },
       {
         path : '/dashboard/payments',
-        element: <MyPayments></MyPayments>
+        element: <StudentRoute><MyPayments></MyPayments></StudentRoute>
       },
       {
         path: '/dashboard/admin/allUsers',
-        element: <AllUsers></AllUsers>
+        element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
       },
       {
         path: "/dashboard/payment/:id",
@@ -85,7 +86,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/dashboard/admin/manageClasses',
-        element: <ManageClasses></ManageClasses>
+        element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
       }
     ]
   }
