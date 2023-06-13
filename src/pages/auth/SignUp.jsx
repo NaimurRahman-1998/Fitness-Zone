@@ -11,6 +11,8 @@ const SignUp = () => {
     const [email, setEmail] = useState("");
     const [emailError, setEmailError] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [cpError, setCpError] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [photo, setPhoto] = useState("");
@@ -18,6 +20,7 @@ const SignUp = () => {
     const { createUser, updateUserProfile, signInWithGoogle, logOut } =
         useContext(AuthContext);
 
+        console.log(password,confirmPassword)
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -27,8 +30,12 @@ const SignUp = () => {
         } else if (passwordError) {
             e.target.password.focus();
             return;
+        } else if (password !==confirmPassword) {
+            e.target.cPassword.focus();
+            alert("password Doesn't match")
+            return
         }
-        console.log(email, photo)
+        console.log(email, photo ,password,confirmPassword )
 
         createUser(email, password)
             .then((userCredential) => {
@@ -86,6 +93,11 @@ const SignUp = () => {
             setPasswordError("");
         }
     };
+
+    const handleConfirmPassword =(e)=>{
+        const input = e.target.value;
+        setConfirmPassword(input)
+    }
     const handleGoogleSignIn = () => {
         signInWithGoogle()
             .then((result) => {
@@ -142,8 +154,24 @@ const SignUp = () => {
                         onChange={handlePassword}
                     />
                     {passwordError && (
-                        <span className="text-red-500 py-2 text-lg font-medium">
+                        <span className="text-red-500 py-2 text-sm">
                             {passwordError}
+                        </span>
+                    )}
+                </div>
+                <div className="flex flex-col">
+                    <label className="input-txt">Confirm Password</label>
+                    <input
+                        className="input"
+                        type="text"
+                        name="cPassword"
+                        required
+                        placeholder="Your Password"
+                        onChange={handleConfirmPassword}
+                    />
+                    {cpError && (
+                        <span className="text-red-500 py-2 text-sm">
+                            {cpError}
                         </span>
                     )}
                 </div>
@@ -158,7 +186,7 @@ const SignUp = () => {
                         onChange={(e) => setPhoto(e.target.value)}
                     />
                     {errorMessage && (
-                        <span className="text-red-500 py-2 text-lg font-medium">
+                        <span className="text-red-500 py-2 text-sm">
                             {errorMessage}
                         </span>
                     )}
