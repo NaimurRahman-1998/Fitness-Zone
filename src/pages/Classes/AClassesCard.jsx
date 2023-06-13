@@ -27,8 +27,8 @@ const AClassesCard = ({ acls }) => {
                     if (data.insertedId) {
                         alert('Classes Added to Dashboard')
                     }
-                    else {
-                        alert('You Already Selected This Class')
+                    else{
+                        alert('Class Already Exists')
                     }
                 })
         }

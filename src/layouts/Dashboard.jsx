@@ -88,6 +88,7 @@ const Dashboard = () => {
                                 }
 
                                 <NavLink to={'/'}>Go to Home </NavLink>
+                                <NavLink to={'/classes'}>Go to Classes </NavLink>
                             </ul>
 
                         </div>

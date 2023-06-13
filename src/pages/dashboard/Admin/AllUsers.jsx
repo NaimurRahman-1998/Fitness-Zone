@@ -1,14 +1,18 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../../providers/AuthProvider';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const AllUsers = () => {
-
+    const {user , loading} = useContext(AuthContext)
+    const [axiosSecure] = useAxiosSecure();
     const { refetch, data: allUsers = [] } = useQuery({
         queryKey: ['allUsers'],
+        enabled: !loading && !!user?.email && !!localStorage.getItem("access-token"),
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users/allUsers`)
-            return res.json();
+            const res = await axiosSecure.get(`/users/allUsers`)
+            return res.data;
         },
     })
 

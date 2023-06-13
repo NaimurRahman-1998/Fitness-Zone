@@ -1,9 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import FeedbackModal from "../../../component/FeedbackModal";
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 
 const ManageClasses = () => {
+    const {user , loading} = useContext(AuthContext);
 
     const { refetch, data: allClasses = [] } = useQuery({
         queryKey: ['classes'],
@@ -29,10 +32,6 @@ const ManageClasses = () => {
                 alert("class denied")
                 refetch();
             })
-    }
-
-    const handleModal = (id) => {
-        return <FeedbackModal id={id}></FeedbackModal>
     }
 
     return (
