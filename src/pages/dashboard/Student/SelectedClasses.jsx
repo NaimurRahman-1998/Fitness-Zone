@@ -12,7 +12,7 @@ const SelectedClasses = () => {
 
     const { refetch, data: selectedClass = [] } = useQuery({
         queryKey: ['approved'],
-        enabled: !loading,
+        enabled: !loading && !!user?.email && !!localStorage.getItem("access-token"),
         queryFn: async () => {
             const res = await axiosSecure(url)
             return res.data;

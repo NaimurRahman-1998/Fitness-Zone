@@ -5,12 +5,14 @@ import { Elements } from '@stripe/react-stripe-js';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { AuthContext } from '../../../providers/AuthProvider';
+import useStudent from '../../../hooks/useStudent';
 
 const Payment = () => {
     const id = useParams();
     // console.log(id.id)
     const [price, setPrice] = useState(0);
     const { loading, user } = useContext(AuthContext)
+
     const { refetch, data: selectedClass = [], isLoading } = useQuery({
         queryKey: ['selected', id.id],
         enabled: !loading && !!user?.email,
