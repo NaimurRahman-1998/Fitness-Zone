@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import { saveUser } from "../../api/auth";
 import Lottie from "lottie-react";
 import signup from "../../assets/Animations/23640-sign-in-or-sign-up-animation.json";
+import { Helmet } from "react-helmet-async";
+import { toast } from "react-hot-toast";
 const SignUp = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -32,7 +34,7 @@ const SignUp = () => {
             return;
         } else if (password !==confirmPassword) {
             e.target.cPassword.focus();
-            alert("password Doesn't match")
+            toast.error("password Doesn't match")
             return
         }
         console.log(email, photo ,password,confirmPassword )
@@ -47,7 +49,7 @@ const SignUp = () => {
                         // Profile updated!
                         // ...
                         setErrorMessage("");
-                        alert('user Created')
+                        toast.success('user Created')
                         saveUser(userCredential.user)
                         logOut()
                     }).catch((error) => {
@@ -107,11 +109,12 @@ const SignUp = () => {
             .catch((err) => {
                 // setLoading(false)
                 console.log(err.message);
-                alert(err.message);
+                toast.success(err.message);
             });
     };
     return (
         <div className="flex gap-5 justify-center items-center h-[100vh]">
+        <Helmet><title>Fitness | SignUp</title></Helmet>
             <Lottie animationData={signup} loop={true} />
             <form onSubmit={handleSubmit} className="bg-neutral-200 w-[40%] px-28 py-16">
                 <h1 className="text-center text-5xl font-bold mb-5">Please Register!</h1>

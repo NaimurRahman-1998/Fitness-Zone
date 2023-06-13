@@ -5,13 +5,13 @@ import { AuthContext } from '../../../providers/AuthProvider';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const MyClasses = () => {
-    const { user ,loading} = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
     const [axiosSecure] = useAxiosSecure();
     const { refetch, data: classes = [] } = useQuery({
         queryKey: ['classes', user?.email],
         enabled: !loading && !!user?.email && !!localStorage.getItem("access-token"),
         queryFn: async () => {
-            const res = await axiosSecure.get(`http://localhost:5000/classes/${user?.email}`)
+            const res = await axiosSecure.get(`https://fabserver-naimurrahman-1998.vercel.app/classes/${user?.email}`)
             return res.data;
         },
     })

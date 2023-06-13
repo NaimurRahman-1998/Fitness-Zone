@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import TransitionEffect from "../../component/TransitionEffect";
+import { Helmet } from "react-helmet-async";
 
 
 const InstructorPage = () => {
@@ -7,7 +8,7 @@ const InstructorPage = () => {
     const { refetch, data: instructors = [] } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users/instructor`)
+            const res = await fetch(`https://fabserver-naimurrahman-1998.vercel.app/users/instructor`)
             return res.json();
         },
     })
@@ -16,7 +17,10 @@ const InstructorPage = () => {
 
     return (
         <>
-        <TransitionEffect></TransitionEffect>
+        <Helmet>
+            <title>Fitness | Instructors</title>
+        </Helmet>
+            <TransitionEffect></TransitionEffect>
             <div className="mt-16 border-4  mx-40">
                 <h1 className="title">Instructors</h1>
                 <div className="overflow-x-auto  pl-40 mt-[-2.5rem]">

@@ -8,6 +8,8 @@ import { AiFillEyeInvisible } from 'react-icons/ai';
 import { saveUser } from "../../api/auth";
 import Lottie from "lottie-react";
 import signup from "../../assets/Animations/signup.json";
+import { Helmet } from "react-helmet-async";
+import toast from 'react-hot-toast';
 const Login = () => {
     const [show,setShow] = useState(false)
     const { signIn, signInWithGoogle } = useContext(AuthContext);
@@ -22,11 +24,11 @@ const Login = () => {
             .then(result => {
                 console.log(result.user)
                 navigate(from, { replace: true })
-                alert("Login successfull")
+                toast.success('login SuccessFull');
 
             })
             .catch(err => {
-                alert(err.message)
+                toast.error(err.message)
             })
     }
 
@@ -40,7 +42,7 @@ const Login = () => {
         .catch((err) => {
             // setLoading(false)
             console.log(err.message);
-            alert(err.message);
+            toast.error(err.message);
         });
     }
 
@@ -51,6 +53,7 @@ const Login = () => {
     return (
 
         <div className="flex justify-center items-center h-[100vh]">
+        <Helmet><title>Fitness | Login</title></Helmet>
         <Lottie animationData={signup} loop={true} />
             <form className="bg-neutral-300 w-[40%] px-28 py-20" onSubmit={handleSubmit(onSubmit)}>
                 {/* register your input into the hook by invoking the "register" function */}

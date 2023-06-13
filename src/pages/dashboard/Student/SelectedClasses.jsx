@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { toast } from 'react-hot-toast';
 
 const SelectedClasses = () => {
     const { user, loading } = useContext(AuthContext)
-    const [axiosSecure] =useAxiosSecure();
+    const [axiosSecure] = useAxiosSecure();
     const url = `/selected/user/${user?.email}`
 
     const { refetch, data: selectedClass = [] } = useQuery({
@@ -22,13 +23,13 @@ const SelectedClasses = () => {
     const handleDelete = id => {
         confirm("are you sure?");
         if (confirm) {
-            fetch(`http://localhost:5000/selected/${id}`, {
+            fetch(`https://fabserver-naimurrahman-1998.vercel.app/selected/${id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
-                        alert("done")
+                        toast.success("Deleted Class")
                         refetch()
                     }
                 })

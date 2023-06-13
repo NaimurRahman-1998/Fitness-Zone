@@ -3,6 +3,7 @@ import useInstructor from "../hooks/useInstructor";
 import { AuthContext } from "../providers/AuthProvider";
 import { addSelectClass } from "../api/classes";
 import UpdateModal from "../pages/dashboard/Instructors/UpdateModal";
+import { toast } from "react-hot-toast";
 
 const ClassesCard = ({ cls ,refetch }) => {
 
@@ -18,10 +19,10 @@ const ClassesCard = ({ cls ,refetch }) => {
             .then(data => {
                 console.log(data)
                 if (data.insertedId) {
-                    alert('Classes Added to Dashboard')
+                    toast.success('classes Added to Dashboard')
                 }
                 else {
-                    alert('You Already Selected This Class')
+                    toast.error('You Already Selected This Class')
                 }
             })
     }

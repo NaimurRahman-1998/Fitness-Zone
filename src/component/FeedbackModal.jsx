@@ -1,17 +1,18 @@
 import axios from 'axios';
 import React from 'react';
+import { toast } from 'react-hot-toast';
 
 const FeedbackModal = ({ data }) => {
     const handleFeedback = event => {
         event.preventDefault();
         const form = event.target;
         const feedback = form.feedback.value;
-        
-        axios.put(`http://localhost:5000/classes/feedback/${data._id}`,{feedback})
-        .then(data=>{
-            console.log(data.data)
-            alert('feedback added')
-        })
+
+        axios.put(`https://fabserver-naimurrahman-1998.vercel.app/classes/feedback/${data._id}`, { feedback })
+            .then(data => {
+                console.log(data.data)
+                toast.success('feedback added')
+            })
 
     }
     return (

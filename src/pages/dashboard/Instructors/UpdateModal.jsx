@@ -1,22 +1,23 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import axios from "axios";
+import { toast } from "react-hot-toast";
 
 
-const UpdateModal = ({ data ,refetch }) => {
-    const {user} = useContext(AuthContext)
+const UpdateModal = ({ data, refetch }) => {
+    const { user } = useContext(AuthContext)
     const handleSubmit = e => {
         e.preventDefault();
         const price = parseFloat(e.target.price.value)
         const seats = parseFloat(e.target.seats.value)
-        const added = { price , seats }
-        axios.put(`http://localhost:5000/classes/update/${data._id}` , added)
-        .then(data=>{
-            if(data.data.modifiedCount > 0){
-                alert('class Updated')
-                refetch();
-            }
-        })
+        const added = { price, seats }
+        axios.put(`https://fabserver-naimurrahman-1998.vercel.app/classes/update/${data._id}`, added)
+            .then(data => {
+                if (data.data.modifiedCount > 0) {
+                    toast.success('class Updated')
+                    refetch();
+                }
+            })
 
     }
 

@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 import './form.css'
+import { toast } from 'react-hot-toast';
 const CheckOutFrom = ({ data, price }) => {
     const stripe = useStripe();
     const elements = useElements();
@@ -12,7 +13,7 @@ const CheckOutFrom = ({ data, price }) => {
     const { user } = useContext(AuthContext)
 
     useEffect(() => {
-        axios.post('http://localhost:5000/create-payment-intent', { price })
+        axios.post('https://fabserver-naimurrahman-1998.vercel.app/create-payment-intent', { price })
             .then(data => {
                 console.log(data.data.clientSecret)
                 setClientSecret(data.data.clientSecret)
@@ -39,7 +40,7 @@ const CheckOutFrom = ({ data, price }) => {
 
         if (error) {
             console.log('[error]', error);
-            alert(error.message)
+            toast.error(error.message)
         } else {
             console.log('[PaymentMethod]', paymentMethod);
         }
@@ -59,7 +60,7 @@ const CheckOutFrom = ({ data, price }) => {
             },
         );
         if (confirmError) {
-            alert(confirmError)
+            toast.error(confirmError)
         }
 
         console.log(paymentIntent)
@@ -77,11 +78,11 @@ const CheckOutFrom = ({ data, price }) => {
                 instructorEmail: data.instructorEmail,
                 instructorName: data.instructorName
             }
-            axios.post('http://localhost:5000/payments', details)
+            axios.post('https://fabserver-naimurrahman-1998.vercel.app/payments', details)
                 .then(res => {
                     if (res.data.insertedResult.insertedId) {
-                        alert('payment done')
-                        axios.put(`http://localhost:5000/classes/enrolled/${data.classId}`)
+                        toast.success('payment done Successfully!')
+                        axios.put(`https://fabserver-naimurrahman-1998.vercel.app/classes/enrolled/${data.classId}`)
                             .then(response => {
                                 console.log(response.data);
                             })

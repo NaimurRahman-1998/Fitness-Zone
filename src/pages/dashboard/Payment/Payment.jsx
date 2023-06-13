@@ -17,7 +17,7 @@ const Payment = () => {
         queryKey: ['selected', id.id],
         enabled: !loading && !!user?.email,
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/selected/${id.id}`)
+            const res = await fetch(`https://fabserver-naimurrahman-1998.vercel.app/selected/${id.id}`)
             return res.json();
         },
     })

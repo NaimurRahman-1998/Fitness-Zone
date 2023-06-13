@@ -3,9 +3,10 @@ import axios from 'axios';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { toast } from 'react-hot-toast';
 
 const AllUsers = () => {
-    const {user , loading} = useContext(AuthContext)
+    const { user, loading } = useContext(AuthContext)
     const [axiosSecure] = useAxiosSecure();
     const { refetch, data: allUsers = [] } = useQuery({
         queryKey: ['allUsers'],
@@ -20,10 +21,10 @@ const AllUsers = () => {
         console.log('clicked', id)
         confirm('are You Sure you want to make this is Admin')
         if (confirm) {
-            axios.patch(`http://localhost:5000/users/admin/${id}`)
+            axios.patch(`https://fabserver-naimurrahman-1998.vercel.app/users/admin/${id}`)
                 .then(data => {
                     console.log(data.data)
-                    alert('User is Admin Now')
+                    toast.success('User is Admin Now')
                     refetch()
                 })
         }
@@ -32,10 +33,10 @@ const AllUsers = () => {
     const handleInstructor = (id) => {
         confirm('are You Sure you want to make this is Instructor')
         if (confirm) {
-            axios.patch(`http://localhost:5000/users/instructor/${id}`)
+            axios.patch(`https://fabserver-naimurrahman-1998.vercel.app/users/instructor/${id}`)
                 .then(data => {
                     console.log(data.data)
-                    alert('User is Instructor Now')
+                    toast.success('User is Instructor Now')
                     refetch()
                 })
         }

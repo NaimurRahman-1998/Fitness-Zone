@@ -6,7 +6,7 @@ const PopularInstructors = () => {
     const { refetch, data: instructors = [] } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users/instructor`)
+            const res = await fetch(`https://fabserver-naimurrahman-1998.vercel.app/users/instructor`)
             return res.json();
         },
     })
@@ -18,7 +18,7 @@ const PopularInstructors = () => {
             <div className='flex justify-around'>
                 <div className=' grid  lg:grid-cols-4 gap-10'>
                     {
-                        instructors.slice(0,8).map(singleI =>
+                        instructors.slice(0, 8).map(singleI =>
                             <InstructorsCard key={singleI._id} data={singleI}>
 
                             </InstructorsCard>

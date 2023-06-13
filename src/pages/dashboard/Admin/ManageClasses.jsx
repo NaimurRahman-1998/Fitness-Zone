@@ -3,33 +3,34 @@ import axios from "axios";
 import FeedbackModal from "../../../component/FeedbackModal";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
+import { toast } from "react-hot-toast";
 
 
 const ManageClasses = () => {
-    const {user , loading} = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
 
     const { refetch, data: allClasses = [] } = useQuery({
         queryKey: ['classes'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/classes`)
+            const res = await fetch(`https://fabserver-naimurrahman-1998.vercel.app/classes`)
             return res.json();
         },
     })
 
     const handleApprove = (id) => {
-        axios.patch(`http://localhost:5000/classes/approve/${id}`)
+        axios.patch(`https://fabserver-naimurrahman-1998.vercel.app/classes/approve/${id}`)
             .then(data => {
                 console.log(data.data)
-                alert("class Approved")
+                toast.success("class Approved")
                 refetch();
             })
     }
 
     const handleDeny = (id) => {
-        axios.patch(`http://localhost:5000/classes/deny/${id}`)
+        axios.patch(`https://fabserver-naimurrahman-1998.vercel.app/classes/deny/${id}`)
             .then(data => {
                 console.log(data.data)
-                alert("class denied")
+                toast.error("class denied")
                 refetch();
             })
     }

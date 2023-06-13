@@ -7,6 +7,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import useInstructor from "../../hooks/useInstructor";
 import useAdmin from "../../hooks/useAdmin";
 import { addSelectClass } from "../../api/classes";
+import { toast } from "react-hot-toast";
 
 const AClassesCard = ({ acls }) => {
     AOS.init();
@@ -25,10 +26,10 @@ const AClassesCard = ({ acls }) => {
                 .then(data => {
                     console.log(data)
                     if (data.insertedId) {
-                        alert('Classes Added to Dashboard')
+                        toast.success('Classes Added to Dashboard')
                     }
                     else{
-                        alert('Class Already Exists')
+                        toast('Class Already Exists')
                     }
                 })
         }

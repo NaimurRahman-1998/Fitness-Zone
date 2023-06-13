@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { addClass } from '../../../api/classes';
 import { motion } from "framer-motion"
+import { toast } from 'react-hot-toast';
 const Instructor = () => {
     const { user } = useContext(AuthContext);
     const handleSubmit = e => {
@@ -17,7 +18,7 @@ const Instructor = () => {
         addClass(added)
             .then(data => {
                 console.log(data)
-                alert("added")
+                toast.success("added a class Successfully")
             })
     }
 

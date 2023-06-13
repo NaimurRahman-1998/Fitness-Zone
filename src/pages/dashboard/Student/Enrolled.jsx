@@ -17,10 +17,11 @@ const Enrolled = () => {
             return res.data;
         },
     })
-    console.log(enrolled)
+    console.log(enrolled.length)
     return (
         <div>
-            <div className='grid grid-cols-2'>
+        <h1 className='title'>Your EnrollMents :</h1>
+            <div className='grid grid-cols-2 gap-5'>
             {
                 enrolled.map(data=>
                 <EnrolledCard key={data._id} data={data}>

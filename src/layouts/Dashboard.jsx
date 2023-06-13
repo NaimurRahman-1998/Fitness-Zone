@@ -4,6 +4,7 @@ import useInstructor from "../hooks/useInstructor";
 import useAdmin from "../hooks/useAdmin";
 import useStudent from "../hooks/useStudent";
 import TransitionEffect from "../component/TransitionEffect";
+import { Helmet } from "react-helmet-async";
 
 
 const Dashboard = () => {
@@ -12,6 +13,7 @@ const Dashboard = () => {
     const [isStudent] = useStudent()
     return (
         <div>
+        <Helmet><title>Fitness | Dashboard</title></Helmet>
         <TransitionEffect></TransitionEffect>
             <div>
                 <div className="drawer lg:drawer-open">
