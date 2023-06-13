@@ -3,16 +3,19 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const SelectedClasses = () => {
     const { user, loading } = useContext(AuthContext)
-    const url = `http://localhost:5000/selected/user/${user?.email}`
+    const [axiosSecure] =useAxiosSecure();
+    const url = `/selected/user/${user?.email}`
 
     const { refetch, data: selectedClass = [] } = useQuery({
         queryKey: ['approved'],
+        enabled: !loading,
         queryFn: async () => {
-            const res = await fetch(url)
-            return res.json();
+            const res = await axiosSecure(url)
+            return res.data;
         },
     })
 

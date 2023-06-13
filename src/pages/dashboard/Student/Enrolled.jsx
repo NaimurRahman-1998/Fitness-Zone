@@ -2,16 +2,19 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
 import EnrolledCard from './EnrolledCard';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const Enrolled = () => {
 
-    const{user} = useContext(AuthContext);
+    const{user ,loading} = useContext(AuthContext);
+    const [axiosSecure] = useAxiosSecure();
 
     const { refetch, data: enrolled = [] } = useQuery({
         queryKey: ['payments' , user?.email],
+        enabled: !loading,
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/payments/${user?.email}`)
-            return res.json();
+            const res = await axiosSecure(`/payments/${user?.email}`)
+            return res.data;
         },
     })
     console.log(enrolled)
