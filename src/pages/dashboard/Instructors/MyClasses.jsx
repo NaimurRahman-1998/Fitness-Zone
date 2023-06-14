@@ -11,7 +11,7 @@ const MyClasses = () => {
         queryKey: ['classes', user?.email],
         enabled: !loading && !!user?.email && !!localStorage.getItem("access-token"),
         queryFn: async () => {
-            const res = await axiosSecure.get(`https://fabserver-naimurrahman-1998.vercel.app/classes/${user?.email}`)
+            const res = await axiosSecure.get(`https://fabserver-1zfv0qa9u-naimurrahman-1998.vercel.app/classes/${user?.email}`)
             return res.data;
         },
     })

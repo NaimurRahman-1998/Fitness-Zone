@@ -13,7 +13,7 @@ const CheckOutFrom = ({ data, price }) => {
     const { user } = useContext(AuthContext)
 
     useEffect(() => {
-        axios.post('https://fabserver-naimurrahman-1998.vercel.app/create-payment-intent', { price })
+        axios.post('https://fabserver-1zfv0qa9u-naimurrahman-1998.vercel.app/create-payment-intent', { price })
             .then(data => {
                 console.log(data.data.clientSecret)
                 setClientSecret(data.data.clientSecret)
@@ -78,11 +78,11 @@ const CheckOutFrom = ({ data, price }) => {
                 instructorEmail: data.instructorEmail,
                 instructorName: data.instructorName
             }
-            axios.post('https://fabserver-naimurrahman-1998.vercel.app/payments', details)
+            axios.post('https://fabserver-1zfv0qa9u-naimurrahman-1998.vercel.app/payments', details)
                 .then(res => {
                     if (res.data.insertedResult.insertedId) {
                         toast.success('payment done Successfully!')
-                        axios.put(`https://fabserver-naimurrahman-1998.vercel.app/classes/enrolled/${data.classId}`)
+                        axios.put(`https://fabserver-1zfv0qa9u-naimurrahman-1998.vercel.app/classes/enrolled/${data.classId}`)
                             .then(response => {
                                 console.log(response.data);
                             })

@@ -1,5 +1,5 @@
 export const addClass = async classData => {
-    const response = await fetch(`https://fabserver-naimurrahman-1998.vercel.app/classes`, {
+    const response = await fetch(`https://fabserver-1zfv0qa9u-naimurrahman-1998.vercel.app/classes`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
@@ -12,7 +12,7 @@ export const addClass = async classData => {
 }
 
 export const addSelectClass = async classData => {
-    const response = await fetch(`https://fabserver-naimurrahman-1998.vercel.app/selected`, {
+    const response = await fetch(`https://fabserver-1zfv0qa9u-naimurrahman-1998.vercel.app/selected`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
@@ -26,7 +26,7 @@ export const addSelectClass = async classData => {
 
 
 export const addPayments = async classData => {
-    const response = await fetch(`https://fabserver-naimurrahman-1998.vercel.app/payments`, {
+    const response = await fetch(`https://fabserver-1zfv0qa9u-naimurrahman-1998.vercel.app/payments`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

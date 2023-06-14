@@ -12,13 +12,13 @@ const ManageClasses = () => {
     const { refetch, data: allClasses = [] } = useQuery({
         queryKey: ['classes'],
         queryFn: async () => {
-            const res = await fetch(`https://fabserver-naimurrahman-1998.vercel.app/classes`)
+            const res = await fetch(`https://fabserver-1zfv0qa9u-naimurrahman-1998.vercel.app/classes`)
             return res.json();
         },
     })
 
     const handleApprove = (id) => {
-        axios.patch(`https://fabserver-naimurrahman-1998.vercel.app/classes/approve/${id}`)
+        axios.patch(`https://fabserver-1zfv0qa9u-naimurrahman-1998.vercel.app/classes/approve/${id}`)
             .then(data => {
                 console.log(data.data)
                 toast.success("class Approved")
@@ -27,7 +27,7 @@ const ManageClasses = () => {
     }
 
     const handleDeny = (id) => {
-        axios.patch(`https://fabserver-naimurrahman-1998.vercel.app/classes/deny/${id}`)
+        axios.patch(`https://fabserver-1zfv0qa9u-naimurrahman-1998.vercel.app/classes/deny/${id}`)
             .then(data => {
                 console.log(data.data)
                 toast.error("class denied")

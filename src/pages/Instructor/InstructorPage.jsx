@@ -8,7 +8,7 @@ const InstructorPage = () => {
     const { refetch, data: instructors = [] } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch(`https://fabserver-naimurrahman-1998.vercel.app/users/instructor`)
+            const res = await fetch(`https://fabserver-1zfv0qa9u-naimurrahman-1998.vercel.app/users/instructor`)
             return res.json();
         },
     })
@@ -17,9 +17,9 @@ const InstructorPage = () => {
 
     return (
         <>
-        <Helmet>
-            <title>Fitness | Instructors</title>
-        </Helmet>
+            <Helmet>
+                <title>Fitness | Instructors</title>
+            </Helmet>
             <TransitionEffect></TransitionEffect>
             <div className="mt-16 border-4  mx-40">
                 <h1 className="title">Instructors</h1>

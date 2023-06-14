@@ -11,7 +11,7 @@ const UpdateModal = ({ data, refetch }) => {
         const price = parseFloat(e.target.price.value)
         const seats = parseFloat(e.target.seats.value)
         const added = { price, seats }
-        axios.put(`https://fabserver-naimurrahman-1998.vercel.app/classes/update/${data._id}`, added)
+        axios.put(`https://fabserver-1zfv0qa9u-naimurrahman-1998.vercel.app/classes/update/${data._id}`, added)
             .then(data => {
                 if (data.data.modifiedCount > 0) {
                     toast.success('class Updated')

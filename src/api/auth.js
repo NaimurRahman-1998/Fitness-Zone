@@ -7,7 +7,7 @@ export const saveUser = user => {
         role: 'student'
     }
 
-    fetch(`https://fabserver-naimurrahman-1998.vercel.app/users/${user?.email}`, {
+    fetch(`https://fabserver-1zfv0qa9u-naimurrahman-1998.vercel.app/users/${user?.email}`, {
         method: 'PUT',
         headers: {
             'content-type': 'application/json',

@@ -10,7 +10,7 @@ const Home = () => {
 
 
     return (
-        <div >
+        <div>
         <Helmet><title>Fitness || Home</title></Helmet>
         <TransitionEffect></TransitionEffect>
             <Banner></Banner>
@@ -22,20 +22,6 @@ const Home = () => {
         </div >
 
 
-
-
-
-        // <div className="grid grid-cols-3">
-        //     {
-        //         classes.map(cls =>
-        //             <ClassesCard
-        //                 key={cls._id}
-        //                 cls={cls}
-        //             >
-
-        //             </ClassesCard>)
-        //     }
-        // </div>
     );
 };
 

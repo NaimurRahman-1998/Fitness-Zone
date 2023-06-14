@@ -21,7 +21,7 @@ const AllUsers = () => {
         console.log('clicked', id)
         confirm('are You Sure you want to make this is Admin')
         if (confirm) {
-            axios.patch(`https://fabserver-naimurrahman-1998.vercel.app/users/admin/${id}`)
+            axios.patch(`https://fabserver-1zfv0qa9u-naimurrahman-1998.vercel.app/users/admin/${id}`)
                 .then(data => {
                     console.log(data.data)
                     toast.success('User is Admin Now')
@@ -33,7 +33,7 @@ const AllUsers = () => {
     const handleInstructor = (id) => {
         confirm('are You Sure you want to make this is Instructor')
         if (confirm) {
-            axios.patch(`https://fabserver-naimurrahman-1998.vercel.app/users/instructor/${id}`)
+            axios.patch(`https://fabserver-1zfv0qa9u-naimurrahman-1998.vercel.app/users/instructor/${id}`)
                 .then(data => {
                     console.log(data.data)
                     toast.success('User is Instructor Now')

@@ -6,7 +6,7 @@ const PopularInstructors = () => {
     const { refetch, data: instructors = [] } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch(`https://fabserver-naimurrahman-1998.vercel.app/users/instructor`)
+            const res = await fetch(`https://fabserver-1zfv0qa9u-naimurrahman-1998.vercel.app/users/instructor`)
             return res.json();
         },
     })

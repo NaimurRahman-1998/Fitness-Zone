@@ -10,7 +10,7 @@ const Classes = () => {
     const { refetch, data: approvedClasses = [] } = useQuery({
         queryKey: ['approved'],
         queryFn: async () => {
-            const res = await fetch(`https://fabserver-naimurrahman-1998.vercel.app/approved`)
+            const res = await fetch(`https://fabserver-1zfv0qa9u-naimurrahman-1998.vercel.app/approved`)
             return res.json();
         },
     })
@@ -18,7 +18,7 @@ const Classes = () => {
 
     return (
         <>
-        <Helmet><title>Fitness | Classes</title></Helmet>
+            <Helmet><title>Fitness | Classes</title></Helmet>
             <TransitionEffect></TransitionEffect>
             <div className='mt-20 mx-40'>
                 <div className='grid grid-cols-3 gap-12'>

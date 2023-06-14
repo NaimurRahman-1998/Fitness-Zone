@@ -8,7 +8,7 @@ const FeedbackModal = ({ data }) => {
         const form = event.target;
         const feedback = form.feedback.value;
 
-        axios.put(`https://fabserver-naimurrahman-1998.vercel.app/classes/feedback/${data._id}`, { feedback })
+        axios.put(`https://fabserver-1zfv0qa9u-naimurrahman-1998.vercel.app/classes/feedback/${data._id}`, { feedback })
             .then(data => {
                 console.log(data.data)
                 toast.success('feedback added')

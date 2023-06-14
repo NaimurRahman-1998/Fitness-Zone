@@ -8,7 +8,7 @@ const PopularClasses = () => {
     const { refetch, data: classes = [] } = useQuery({
         queryKey: ['classes'],
         queryFn: async () => {
-            const res = await fetch(`https://fabserver-naimurrahman-1998.vercel.app/classes`)
+            const res = await fetch(`https://fabserver-1zfv0qa9u-naimurrahman-1998.vercel.app/classes`)
             return res.json();
         },
     })

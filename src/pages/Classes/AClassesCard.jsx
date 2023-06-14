@@ -44,7 +44,7 @@ const AClassesCard = ({ acls }) => {
             data-aos-once="false"
             data-aos-delay="300"
             data-aos="zoom-in-down"
-            className={acls.seats === 0 ? 'bg-red-300 relative hover:border-lime-500 hover:border-2 transition duration-300 w-96 shadow-xl group' : `relative hover:border-lime-500 hover:border-2 transition duration-300 w-96 bg-base-100 shadow-xl group`}>
+            className={acls.seats < 1 ? 'bg-red-300 relative hover:border-lime-500 hover:border-2 transition duration-300 w-96 shadow-xl group' : `relative hover:border-lime-500 hover:border-2 transition duration-300 w-96 bg-base-100 shadow-xl group`}>
             <figure><img src={acls.image} className=' h-[15rem] w-[25rem]' alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="text-neutral-600 text-2xl ">
@@ -72,8 +72,8 @@ const AClassesCard = ({ acls }) => {
 
                         }}
                         onClick={() => handleSelect(acls)}
-                        disabled={isInstructor || isAdmin || acls.seats === 0 ? true : false}
-                        className={isInstructor || isAdmin || acls.seats === 0 ? 'btn-disabled' : 'text-white px-4 py-2 bg-lime-600 hover:bg-lime-400'}>Add To Cart
+                        disabled={isInstructor || isAdmin || acls.seats < 1 ? true : false}
+                        className={isInstructor || isAdmin || acls.seats < 1 ? 'btn-disabled' : 'text-white px-4 py-2 bg-lime-600 hover:bg-lime-400'}>Add To Cart
                     </motion.button>
                 </div>
 

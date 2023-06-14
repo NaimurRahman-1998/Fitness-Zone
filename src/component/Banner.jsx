@@ -11,7 +11,7 @@ import img2 from '../assets/images/Home/banner02.png'
 import img3 from '../assets/images/Home/banner03.png'
 const Banner = () => {
     return (
-        <div>
+        <div >
             <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
                 <SwiperSlide className="relative">
                     <img className="w-full h-[35rem]" src="https://i.ibb.co/L6j9m7g/young-man-kickboxing-black-155003-10758.jpg" alt="" />

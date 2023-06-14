@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link, NavLink } from "react-router-dom";
@@ -14,11 +14,25 @@ import useInstructor from "../../hooks/useInstructor";
 import logo from '../../assets/images/logo.png'
 
 const Navbar = () => {
+    
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { user, logOut } = useContext(AuthContext);
     const [isAdmin] = useAdmin();
     const [isStudent] = useStudent();
     const [isInstructor] = useInstructor();
+    const [theme,setTheme] = useState('light')
+
+    useEffect(()=>{
+        if(theme==='dark'){
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    },[theme])
+
+    const handleThemeSwitch =()=>{
+        setTheme(theme === 'dark' ? 'light' : 'dark')
+    }
 
 
     const handleLogOut = () => {
@@ -38,11 +52,12 @@ const Navbar = () => {
                 <div className="flex p-3">
                     <Link to='/login'><p className="hover:text-lime-500 border-r-2 px-4 flex justify-center items-center gap-2"> <BiLogIn className="text-lime-500 text-lg" />Member Login</p></Link>
                     <Link to='/signup'><p className="hover:text-lime-500 px-4 flex justify-center items-center gap-2" ><FaUserAlt className="text-lime-500 text-sm" /> register</p></Link>
+                    <button onClick={handleThemeSwitch} className="btn btn-xs">switch theme</button>
                 </div>
             </div>
-            <div className="">
-                <div className="flex z-10 justify-between items-center p-10 w-[80%] bg-white h-20 absolute -bottom-8 left-[50%] transform translate-x-[-50%] mx-auto">
-                    <img className="w-[10rem]" src={logo} alt="" />
+            <div>
+                <div className="dark:bg-neutral-600 flex z-10 justify-between items-center p-10 w-[80%] bg-white h-20 absolute -bottom-8 left-[50%] transform translate-x-[-50%] mx-auto">
+                    <img className="w-[10rem] rounded-lg" src={logo} alt="" />
                     <ul className="items-center hidden space-x-8 lg:flex font-semibold">
                         <li className="hover:text-lime-500">
                             <NavLink
@@ -207,10 +222,8 @@ const Navbar = () => {
                             </div>
                         )}
                     </div>
-
                 </div>
             </div>
-
         </div >
 
     );

@@ -23,7 +23,7 @@ const SelectedClasses = () => {
     const handleDelete = id => {
         confirm("are you sure?");
         if (confirm) {
-            fetch(`https://fabserver-naimurrahman-1998.vercel.app/selected/${id}`, {
+            fetch(`https://fabserver-1zfv0qa9u-naimurrahman-1998.vercel.app/selected/${id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())
