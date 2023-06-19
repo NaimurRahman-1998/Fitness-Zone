@@ -8,12 +8,15 @@ import { Pagination, Navigation } from "swiper";
 import { FaQuoteLeft } from 'react-icons/fa';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { motion } from "framer-motion"
 const Review = () => {
     AOS.init();
     return (
-        (<div
-            
-            className='my-40 bg-fixed reviewDiv'>
+        (<motion.div
+            initial={{ x: -400, scale: 0 }}
+            animate={{ x: 0, scale: 1 }}
+            transition={{ delay: 0.5, duration: 0.75 }}
+            className='my-20 lg:my-40 bg-fixed reviewDiv'>
             <Swiper
                 pagination={{
                     type: "progressbar",
@@ -53,7 +56,7 @@ const Review = () => {
                     </div>
                 </SwiperSlide>
             </Swiper>
-        </div >)
+        </motion.div >)
     );
 };
 

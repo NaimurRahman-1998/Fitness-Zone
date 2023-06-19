@@ -3,7 +3,7 @@ import logo from '../../assets/images/logo.png'
 
 const Footer = () => {
     return (
-        <footer className="dark:bg-neutral-800 footer items-center justify-around lg:mt-20 p-10 bg-neutral-700 text-lime-500 rounded">
+        <footer className="dark:bg-neutral-800 footer items-center justify-around lg:mt-40 p-10 bg-neutral-700 text-lime-500 rounded">
             
             <div className="grid grid-flow-col gap-4">
                 <Link to='/classes'>Classes</Link>

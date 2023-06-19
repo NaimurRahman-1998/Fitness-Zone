@@ -1,8 +1,7 @@
 import React, { useContext, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
-import { useForm } from "react-hook-form";
 import { saveUser } from "../../api/auth";
 import Lottie from "lottie-react";
 import signup from "../../assets/Animations/23640-sign-in-or-sign-up-animation.json";
@@ -50,7 +49,7 @@ const SignUp = () => {
                         // ...
                         setErrorMessage("");
                         toast.success('user Created')
-                        saveUser(userCredential.user)
+                        // saveUser(userCredential.user)
                         logOut()
                     }).catch((error) => {
                         // An error occurred

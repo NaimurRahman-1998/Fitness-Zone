@@ -56,7 +56,7 @@ const Navbar = () => {
                 </div>
             </div>
             <div>
-                <div className="dark:bg-neutral-600 flex z-10 justify-between items-center p-10 w-[80%] bg-white h-20 absolute -bottom-8 left-[50%] transform translate-x-[-50%] mx-auto">
+                <div className="dark:bg-neutral-600 flex z-10 justify-between items-center p-10 w-full lg:w-[80%] bg-white h-20 absolute -bottom-8 left-[50%] transform translate-x-[-50%] mx-auto">
                     <img className="w-[10rem] rounded-lg" src={logo} alt="" />
                     <ul className="items-center hidden space-x-8 lg:flex font-semibold">
                         <li className="hover:text-lime-500">

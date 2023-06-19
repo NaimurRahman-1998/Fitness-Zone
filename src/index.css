@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .title {
-    @apply mb-16 bg-slate-100 text-neutral-600 py-2 text-xl lg:text-5xl text-center dark:bg-neutral-600 dark:text-white
+    @apply mb-4 lg:mb-16 bg-slate-100 text-neutral-600 py-2 text-xl lg:text-5xl text-center dark:bg-neutral-600 dark:text-white
 }
 
 .color {
