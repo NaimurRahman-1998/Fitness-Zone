@@ -21,7 +21,7 @@ const SignUp = () => {
     const { createUser, updateUserProfile, signInWithGoogle, logOut } =
         useContext(AuthContext);
 
-        console.log(password,confirmPassword)
+    console.log(password, confirmPassword)
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -31,12 +31,12 @@ const SignUp = () => {
         } else if (passwordError) {
             e.target.password.focus();
             return;
-        } else if (password !==confirmPassword) {
+        } else if (password !== confirmPassword) {
             e.target.cPassword.focus();
             toast.error("password Doesn't match")
             return
         }
-        console.log(email, photo ,password,confirmPassword )
+        console.log(email, photo, password, confirmPassword)
 
         createUser(email, password)
             .then((userCredential) => {
@@ -95,7 +95,7 @@ const SignUp = () => {
         }
     };
 
-    const handleConfirmPassword =(e)=>{
+    const handleConfirmPassword = (e) => {
         const input = e.target.value;
         setConfirmPassword(input)
     }
@@ -113,7 +113,7 @@ const SignUp = () => {
     };
     return (
         <div className="flex gap-5 justify-center items-center h-[100vh]">
-        <Helmet><title>Fitness | SignUp</title></Helmet>
+            <Helmet><title>Fitness | SignUp</title></Helmet>
             <Lottie animationData={signup} loop={true} />
             <form onSubmit={handleSubmit} className="bg-neutral-200 w-[40%] px-28 py-16">
                 <h1 className="text-center text-5xl font-bold mb-5">Please Register!</h1>
@@ -195,7 +195,7 @@ const SignUp = () => {
                 </div>
 
                 <input
-                    className="btn bg-lime-500 mt-6"
+                    className="btn bg-[#9bb70d] mt-6"
                     type="submit"
                     value="Register"
                 />

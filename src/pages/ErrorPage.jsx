@@ -9,7 +9,7 @@ const ErrorPage = () => {
             <Lottie className='w-[40rem]' animationData={errorAnimation} loop={true} />
             <div>
                 <p className="text-red-500 text-xl">{error?.message}</p>
-                <Link to='/'><button className="btn bg-lime-500">Back To Home Page</button></Link>
+                <Link to='/'><button className="btn bg-[#9bb70d]">Back To Home Page</button></Link>
             </div>
         </div>
     );

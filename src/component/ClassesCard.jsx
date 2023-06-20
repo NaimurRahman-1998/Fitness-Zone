@@ -5,7 +5,7 @@ import { addSelectClass } from "../api/classes";
 import UpdateModal from "../pages/dashboard/Instructors/UpdateModal";
 import { toast } from "react-hot-toast";
 
-const ClassesCard = ({ cls ,refetch }) => {
+const ClassesCard = ({ cls, refetch }) => {
 
     const { user } = useContext(AuthContext)
 
@@ -39,11 +39,11 @@ const ClassesCard = ({ cls ,refetch }) => {
                     <h2 className="text-neutral-400 mb-3">Instructor Name :{cls.instructorName}</h2>
                     <h2 className="card-title">Available Seats: {cls.seats}</h2>
                     <p className="mb-3">Price:{cls.price} $</p>
-                    <label htmlFor={cls._id} className="btn bg-lime-500" >Update</label>
+                    <label htmlFor={cls._id} className="btn bg-[#9bb70d]" >Update</label>
                     <UpdateModal data={cls} refetch={refetch}></UpdateModal>
                 </div>
                 <div className="mt-[4.50rem]">
-                    <p className="font-semibold text-xl">Status: <span className={cls.status === 'denied' && 'text-red-500' || cls.status ==='approved' && 'text-green-500' || cls.status ==='pending' && 'text-yellow-500'}>{cls.status}</span></p>
+                    <p className="font-semibold text-xl">Status: <span className={cls.status === 'denied' && 'text-red-500' || cls.status === 'approved' && 'text-green-500' || cls.status === 'pending' && 'text-yellow-500'}>{cls.status}</span></p>
                     {
                         cls.enrolled > 0 ?
                             <p>Enrolled :{cls.enrolled} Students</p>

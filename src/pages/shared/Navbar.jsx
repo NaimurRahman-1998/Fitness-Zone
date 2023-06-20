@@ -14,23 +14,23 @@ import useInstructor from "../../hooks/useInstructor";
 import logo from '../../assets/images/logo.png'
 
 const Navbar = () => {
-    
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { user, logOut } = useContext(AuthContext);
     const [isAdmin] = useAdmin();
     const [isStudent] = useStudent();
     const [isInstructor] = useInstructor();
-    const [theme,setTheme] = useState('light')
+    const [theme, setTheme] = useState('light')
 
-    useEffect(()=>{
-        if(theme==='dark'){
+    useEffect(() => {
+        if (theme === 'dark') {
             document.documentElement.classList.add('dark')
         } else {
             document.documentElement.classList.remove('dark')
         }
-    },[theme])
+    }, [theme])
 
-    const handleThemeSwitch =()=>{
+    const handleThemeSwitch = () => {
         setTheme(theme === 'dark' ? 'light' : 'dark')
     }
 
@@ -50,8 +50,8 @@ const Navbar = () => {
                     <p className="flex justify-center items-center gap-5"> <FaPhoneAlt /> Any Questions? Call Us: 1-303-499-7111</p>
                 </div>
                 <div className="flex p-3">
-                    <Link to='/login'><p className="hover:text-lime-500 border-r-2 px-4 flex justify-center items-center gap-2"> <BiLogIn className="text-lime-500 text-lg" />Member Login</p></Link>
-                    <Link to='/signup'><p className="hover:text-lime-500 px-4 flex justify-center items-center gap-2" ><FaUserAlt className="text-lime-500 text-sm" /> register</p></Link>
+                    <Link to='/login'><p className="hover:text-[#9bb70d] border-r-2 px-4 flex justify-center items-center gap-2"> <BiLogIn className="text-[#9bb70d] text-lg" />Member Login</p></Link>
+                    <Link to='/signup'><p className="hover:text-[#9bb70d] px-4 flex justify-center items-center gap-2" ><FaUserAlt className="text-[#9bb70d] text-sm" /> register</p></Link>
                     <button onClick={handleThemeSwitch} className="btn btn-xs">switch theme</button>
                 </div>
             </div>
@@ -59,31 +59,31 @@ const Navbar = () => {
                 <div className="dark:bg-neutral-600 flex z-10 justify-between items-center p-10 w-full lg:w-[80%] bg-white h-20 absolute -bottom-8 left-[50%] transform translate-x-[-50%] mx-auto">
                     <img className="w-[10rem] rounded-lg" src={logo} alt="" />
                     <ul className="items-center hidden space-x-8 lg:flex font-semibold">
-                        <li className="hover:text-lime-500">
+                        <li className="hover:text-[#9bb70d]">
                             <NavLink
                                 to="/"
-                                className={({ isActive }) => (isActive ? "text-lime-500" : "default")}
+                                className={({ isActive }) => (isActive ? "text-[#9bb70d]" : "default")}
                             >
                                 Home
                             </NavLink>
                         </li>
-                        <li className="hover:text-lime-500">
+                        <li className="hover:text-[#9bb70d]">
                             <NavLink
                                 to="/instructor"
-                                className={({ isActive }) => (isActive ? "text-lime-500" : "default")}
+                                className={({ isActive }) => (isActive ? "text-[#9bb70d]" : "default")}
                             >
                                 Instructor
                             </NavLink>
                         </li>
-                        <li className="hover:text-lime-500">
+                        <li className="hover:text-[#9bb70d]">
                             <NavLink
                                 to="/classes"
-                                className={({ isActive }) => (isActive ? "text-lime-500" : "default")}
+                                className={({ isActive }) => (isActive ? "text-[#9bb70d]" : "default")}
                             >
                                 Classes
                             </NavLink>
                         </li>
-                        <li className="hover:text-lime-500">
+                        <li className="hover:text-[#9bb70d]">
                             {
                                 isStudent &&
                                 <>
@@ -125,7 +125,7 @@ const Navbar = () => {
                                 <div className="flex gap-2 items-center">
                                     <button
                                         onClick={handleLogOut}
-                                        className="text-black bg-lime-400 px-4 py-2 hover:bg-lime-500 rounded-lg hidden lg:flex"
+                                        className="text-black bg-[#9bb70d] px-4 py-2 hover:bg-[#9bb70d] rounded-lg hidden lg:flex"
                                     >
                                         Log Out
                                     </button>
@@ -134,7 +134,7 @@ const Navbar = () => {
                             </> :
                             <>
                                 <Link to="login">
-                                    <button className="text-black bg-lime-500 px-4 py-2 rounded-lg hidden lg:flex">
+                                    <button className="text-black bg-[#9bb70d] px-4 py-2 rounded-lg hidden lg:flex">
                                         Log In
                                     </button>
                                 </Link>

@@ -75,7 +75,7 @@ const SelectedClasses = () => {
                                 </td>
                                 <td>{single.price} $</td>
                                 <td>
-                                    <button onClick={() => handleDelete(single._id)} className="btn btn-xs btn-error text-white hover:bg-lime-500 hover:border-lime-500">Delete</button>
+                                    <button onClick={() => handleDelete(single._id)} className="btn btn-xs btn-error text-white hover:bg-[#9bb70d] hover:border-lime-500">Delete</button>
                                 </td>
                                 <td>
                                     <Link to={`/dashboard/payment/${single._id}`}><button className="btn btn-xs btn-warning hover:btn-link">Pay</button></Link>

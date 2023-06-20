@@ -119,7 +119,7 @@ const UpdateModal = ({ data, refetch }) => {
                             <div>
                                 <button
                                     type='submit'
-                                    className='bg-lime-500 hover:bg-lime-600 w-full rounded-md py-3 text-white'
+                                    className='bg-[#9bb70d] hover:bg-lime-600 w-full rounded-md py-3 text-white'
                                 >
                                     Submit
                                 </button>

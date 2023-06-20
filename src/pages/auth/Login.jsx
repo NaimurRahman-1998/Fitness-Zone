@@ -11,7 +11,7 @@ import signup from "../../assets/Animations/signup.json";
 import { Helmet } from "react-helmet-async";
 import toast from 'react-hot-toast';
 const Login = () => {
-    const [show,setShow] = useState(false)
+    const [show, setShow] = useState(false)
     const { signIn, signInWithGoogle } = useContext(AuthContext);
     const navigate = useNavigate()
     const location = useLocation()
@@ -34,27 +34,27 @@ const Login = () => {
 
     const handleGoogleSignIn = () => {
         signInWithGoogle()
-        .then((result) => {
-            console.log(result.user);
-            saveUser(result.user)
-            navigate(from, { replace: true });
-        })
-        .catch((err) => {
-            // setLoading(false)
-            console.log(err.message);
-            toast.error(err.message);
-        });
+            .then((result) => {
+                console.log(result.user);
+                saveUser(result.user)
+                navigate(from, { replace: true });
+            })
+            .catch((err) => {
+                // setLoading(false)
+                console.log(err.message);
+                toast.error(err.message);
+            });
     }
 
-    const handleShow =()=>{
+    const handleShow = () => {
         setShow(!show)
     }
 
     return (
 
         <div className="flex justify-center items-center h-[100vh]">
-        <Helmet><title>Fitness | Login</title></Helmet>
-        <Lottie animationData={signup} loop={true} />
+            <Helmet><title>Fitness | Login</title></Helmet>
+            <Lottie animationData={signup} loop={true} />
             <form className="bg-neutral-300 w-[40%] px-28 py-20" onSubmit={handleSubmit(onSubmit)}>
                 {/* register your input into the hook by invoking the "register" function */}
                 <h1 className="text-center text-5xl font-bold mb-5">Login Now</h1>
@@ -70,16 +70,16 @@ const Login = () => {
                     <label>
                         Password
                     </label>
-                    
+
                     <input className=" input" type={show ? 'text' : 'password'} {...register("password", { required: true })} />
                     {
-                        show ? <AiFillEyeInvisible onClick={handleShow} className="absolute right-5 bottom-3 " size={20}/> :  <AiFillEye onClick={handleShow} className="absolute right-5 bottom-3 " size={20}/>
+                        show ? <AiFillEyeInvisible onClick={handleShow} className="absolute right-5 bottom-3 " size={20} /> : <AiFillEye onClick={handleShow} className="absolute right-5 bottom-3 " size={20} />
                     }
                 </div>
                 {/* errors will return when field validation fails  */}
                 {errors.exampleRequired && <span>This field is required</span>}
 
-                <input type="submit" className="btn bg-lime-500 mx-auto mt-5" />
+                <input type="submit" className="btn bg-[#9bb70d] mx-auto mt-5" />
                 <div className='flex items-center pt-4 space-x-1'>
                     <div className='flex-1 h-px sm:w-16'></div>
                     <p className='px-3 text-sm'>
